@@ -4,7 +4,7 @@
 </template>
 
 <script>
-    import {baseUrl} from "../axios";
+    import {bookIndex} from '@/api';
 
     export default {
         name: "Index",
@@ -18,13 +18,9 @@
 
         methods: {
             getIndex() {
-                this.$http.get(baseUrl + "book/index").then(result => {
-                    if (result.data.code === 200){
-                        this.book = result.data.data.book;
-                        this.category = result.data.data.category;
-                        // console.log(this.book);
-                        // console.log(this.category);
-                    }
+                bookIndex().then(res => {
+                    this.book = res.data.book;
+                    this.category = res.data.category;
                 });
             }
         },

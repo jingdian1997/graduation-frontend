@@ -4,13 +4,11 @@ import router from './router'
 import store from './store'
 import iView from 'iview'; // 导入组件库
 import 'iview/dist/styles/iview.css'; // 导入样式
-import depot from './axios.js'
+import axios from "./axios";
 
 Vue.use(iView);
 
-Vue.prototype.$http = http;
-depot();
-
+Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 
 new Vue({
