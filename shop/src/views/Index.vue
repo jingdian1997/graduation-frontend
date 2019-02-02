@@ -37,7 +37,7 @@
                 </div>
             </el-main>
             <el-footer>
-                Copyright (C) 经典图书网 2019-2019, All Rights Reserved
+                Copyright (C) 经典图书网 2015-2019, All Rights Reserved
             </el-footer>
         </el-container>
     </div>
@@ -69,12 +69,6 @@
                     this.indexPageData = res.data;
                     this.imgHeight = this.indexPageData.length * 50;
                 });
-            },
-
-            getJump(cid) {
-                this.$router.push({
-                    path: `/about/${cid}`,
-                })
             },
         },
 
@@ -110,8 +104,5 @@
     p.category {
         text-align: left;
         font-size: 22px;
-    }
-
-    hr {
     }
 </style>

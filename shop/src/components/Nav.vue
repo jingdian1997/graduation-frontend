@@ -30,7 +30,7 @@
 
             getJump(cid) {
                 this.$router.push({
-                    path: `/about/${cid}`,
+                    path: `/search/1/${cid}/`,
                 })
             },
         },
