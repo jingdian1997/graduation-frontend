@@ -1,7 +1,7 @@
 <template>
     <div class="nav">
-        <el-menu :default-active="1" class="el-menu-demo" mode="vertical" @select="" background-color="#e4393c" text-color="white">
-            <el-menu-item v-for="(c, index) in category" :index="(index + 2).toString()" @click="getJump(c.id)" style="height: 50px">
+        <el-menu class="el-menu-demo" mode="vertical" @select="" background-color="#e4393c" text-color="white">
+            <el-menu-item v-for="(c, index) in category" :index="(index).toString()" @click="getJump(c.id)" style="height: 50px">
                 {{c.name}}
             </el-menu-item>
         </el-menu>
@@ -30,7 +30,7 @@
 
             getJump(cid) {
                 this.$router.push({
-                    path: `/search/1/${cid}/`,
+                    path: `/search2/${cid}/`,
                 })
             },
         },

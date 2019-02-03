@@ -1,16 +1,23 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-    token: String
-  },
-  mutations: {
+    state: {
+        token: '1b460cd18bf17fb3f0bb35c5f2fc5bff',
+    },
 
-  },
-  actions: {
+    mutations: {
+        setToken(state, theToken) {
+            state.token = theToken;
+        },
 
-  }
+        cleanToken(state) {
+            state.token = '';
+        }
+    },
+
+    actions: {
+    }
 })

@@ -1,14 +1,51 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view v-if="isRouterAlive"/>
   </div>
 </template>
 
+<script>
+  export default {
+      name: 'app',
+       provide() {
+           return {
+               reload: this.reload,
+           };
+       },
+
+      data() {
+          return {
+              isRouterAlive: true,
+          };
+      },
+
+      methods: {
+          reload() {
+              this.isRouterAlive = false;
+              this.$nextTick(() => {
+                  this.isRouterAlive = true;
+              });
+          }
+      }
+  }
+</script>
+
 <style>
   * {
-    background-color: #f5f5f5;
+    /*background-color: #f5f5f5;*/
     padding: 0;
     margin: 0;
+  }
+
+  .link {
+    color: black;
+    text-decoration: none;
+  }
+
+  .link2 {
+    color: white;
+    background-color: #e4393c;
+    text-decoration: none;
   }
 
   #app {

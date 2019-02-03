@@ -1,8 +1,18 @@
 <template>
     <div class="index">
         <el-container>
-            <el-header>
-                <PersonalNav></PersonalNav>
+            <el-header style="height: 130px; margin-left: -140px; margin-right: -140px">
+                <el-container>
+                    <el-header>
+                        <PersonalNav></PersonalNav>
+                    </el-header>
+                    <el-main>
+                        <div class="search">
+                            <el-input v-model="query" style="width: 500px" placeholder="搜索图书名称"></el-input>
+                            <el-button class="button" type="danger" @click="getQuery" icon="el-icon-search"></el-button>
+                        </div>
+                    </el-main>
+                </el-container>
             </el-header>
             <el-main>
                 <el-container>
@@ -18,21 +28,25 @@
 
                 <div id="main">
                     <div class="category" v-for="(item, index) in indexPageData">
-                        <div class="category2">
-                            <router-link class="link" :to="{path:'/about/' + item.id}">
-                                <p class="category">{{item.name}}</p>
-                            </router-link>
-                        </div>
-                        <el-row :gutter="20">
-                            <el-col :span="6" v-for="(book) in item.books">
-                                <router-link class="link" :to="{path:'/about/' + book.id}" color="red">
-                                    <img :src="'data:image/jpg;base64,' + book.picture" width="100px" height="150px"/>
-                                    <p>{{book.name}}</p>
-                                    <p>{{book.author}},{{book.publisher}}</p>
-                                    <p>￥{{book.price}}</p>
+                        <el-card class="box-card" shadow="hover">
+                            <div slot="header" class="clearfix" style="margin:-18px -20px; padding:10px 20px;
+                            background: #e4393c; text-align: left; font-size: 22px; color: white">
+                                <router-link class="link2" :to="{path:'/search/1/' + item.id}">
+                                    {{item.name}}
                                 </router-link>
-                            </el-col>
-                        </el-row>
+                            </div>
+
+                            <el-row :gutter="20">
+                                <el-col :span="6" v-for="(book) in item.books">
+                                    <router-link class="link" :to="{path:'/about/' + book.id}" color="red">
+                                        <img :src="'data:image/jpg;base64,' + book.picture" width="100px" height="150px"/>
+                                        <p>{{book.name}}</p>
+                                        <p>{{book.author}},{{book.publisher}}</p>
+                                        <p>￥{{book.price}}</p>
+                                    </router-link>
+                                </el-col>
+                            </el-row>
+                        </el-card>
                     </div>
                 </div>
             </el-main>
@@ -60,6 +74,7 @@
             return {
                 indexPageData: [],
                 imgHeight: 0,
+                query: '',
             };
         },
 
@@ -70,6 +85,19 @@
                     this.imgHeight = this.indexPageData.length * 50;
                 });
             },
+
+            getQuery() {
+                if (this.query === null || this.query === '') {
+                    this.$router.push({
+                        path: `/search/`,
+                    })
+                } else {
+                    this.$router.push({
+                        path: `/search/${this.query}`,
+                    })
+                }
+            },
+
         },
 
         mounted: function (){
@@ -83,26 +111,7 @@
         margin: 0 100px;
     }
 
-    .link {
-        color: black;
-        text-decoration: none;
-    }
-
     div #picture {
         margin-bottom: 30px;
-    }
-
-    div.category {
-        border-bottom: 3px solid red;
-        margin: 5px 5px 15px;
-    }
-
-    div.category2 {
-        border-bottom: 3px solid red;
-    }
-
-    p.category {
-        text-align: left;
-        font-size: 22px;
     }
 </style>

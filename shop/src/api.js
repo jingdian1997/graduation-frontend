@@ -13,3 +13,5 @@ export const bookList = (page, cid, query) => {
 
     return get("book/list/" + page + "/10" + queryString);
 };
+
+export const userGet = () => get("user/get");
