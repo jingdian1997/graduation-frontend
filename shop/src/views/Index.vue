@@ -19,23 +19,39 @@
                     <el-aside height="100%" width="250px">
                         <Nav></Nav>
                     </el-aside>
-                    <el-main style="padding-top: 0;padding-bottom: 0;">
+                    <el-main style="padding-top: 0;padding-bottom: 0; padding-right: 0">
                         <div id="picture">
-                            <img alt="Vue logo" src="../assets/preview.jpg" :height="imgHeight + 'px'" width="100%"/>
+                            <img alt="Vue logo" src="../assets/preview.jpg" :height="imgHeight + 'px'" style="width: 100%;"/>
                         </div>
                     </el-main>
                 </el-container>
 
                 <div id="main">
+                    <el-card class="box-card" shadow="hover">
+                        <div slot="header" class="clearfix" style="margin:-18px -20px; padding:10px 20px;
+                            background: #e4393c; text-align: left; font-size: 22px; color: white">
+                            新书上架
+                        </div>
+                        <el-row :gutter="20">
+                            <el-col :span="6" v-for="(book) in booksOfNew">
+                                <router-link class="link" :to="{path:'/about/' + book.id}" color="red">
+                                    <img :src="'data:image/jpg;base64,' + book.picture" width="100px" height="150px"/>
+                                    <p>{{book.name}}</p>
+                                    <p>{{book.author}},{{book.publisher}}</p>
+                                    <p>￥{{book.price}}</p>
+                                </router-link>
+                            </el-col>
+                        </el-row>
+                    </el-card>
+
                     <div class="category" v-for="(item, index) in indexPageData">
                         <el-card class="box-card" shadow="hover">
                             <div slot="header" class="clearfix" style="margin:-18px -20px; padding:10px 20px;
                             background: #e4393c; text-align: left; font-size: 22px; color: white">
-                                <router-link class="link2" :to="{path:'/search/1/' + item.id}">
+                                <router-link class="link2" :to="{path:'/search/' + item.id}">
                                     {{item.name}}
                                 </router-link>
                             </div>
-
                             <el-row :gutter="20">
                                 <el-col :span="6" v-for="(book) in item.books">
                                     <router-link class="link" :to="{path:'/about/' + book.id}" color="red">
@@ -58,7 +74,7 @@
 </template>
 
 <script>
-    import {bookIndex} from '@/api';
+    import {bookIndex, newBooks} from '@/api';
     import Nav from '@/components/Nav.vue'
     import PersonalNav from '@//components/PersonalNav.vue'
 
@@ -73,6 +89,7 @@
         data () {
             return {
                 indexPageData: [],
+                booksOfNew: [],
                 imgHeight: 0,
                 query: '',
             };
@@ -86,22 +103,29 @@
                 });
             },
 
-            getQuery() {
-                if (this.query === null || this.query === '') {
-                    this.$router.push({
-                        path: `/search/`,
-                    })
-                } else {
-                    this.$router.push({
-                        path: `/search/${this.query}`,
-                    })
-                }
+            getNews() {
+                newBooks().then(res => {
+                    this.booksOfNew = res.data;
+                });
             },
 
+            getQuery() {
+                if (this.query === null || this.query === '' || this.query === undefined) {
+                    this.$alert('搜索内容不能为空', '内容为空', {
+                        confirmButtonText: '确定',
+                    });
+                    return false;
+                } else {
+                    this.$router.push({
+                        path: `/search/0/${this.query}`,
+                    });
+                }
+            },
         },
 
         mounted: function (){
             this.getIndex();
+            this.getNews();
         },
     }
 </script>

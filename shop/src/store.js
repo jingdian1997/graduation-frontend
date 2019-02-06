@@ -5,7 +5,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        token: '1b460cd18bf17fb3f0bb35c5f2fc5bff',
+        token: '21b303d6e67cf6de1c370a908587acfb',
+        user: {
+            id: null,
+            nickname: null,
+        },
     },
 
     mutations: {
@@ -13,8 +17,17 @@ export default new Vuex.Store({
             state.token = theToken;
         },
 
+        setUser(state, theUser) {
+            state.user.id = theUser.id;
+            state.user.nickname = theUser.nickname;
+        },
+
         cleanToken(state) {
             state.token = '';
+            state.user = {
+                id: null,
+                nickname: null,
+            };
         }
     },
 

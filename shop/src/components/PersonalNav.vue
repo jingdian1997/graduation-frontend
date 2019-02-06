@@ -1,6 +1,6 @@
 <template>
     <div class="personalNav">
-        <div v-if="user === null">
+        <div v-if="user.id === null">
             <el-menu class="el-menu-demo" mode="horizontal" @select="" background-color="#f5f5f5" text-color="black">
                 <el-menu-item index="1">您好，请登录</el-menu-item>
                 <el-menu-item index="2">免费注册</el-menu-item>
@@ -29,30 +29,29 @@
 
         data() {
             return {
-                user: null,
+                user: this.$store.state.user,
             };
         },
 
         methods: {
-            getUser() {
-                if (this.getToken === '') {
-                    this.user = null;
-                } else {
-                    userGet().then(res => {
-                        this.user = res.data;
-                    });
-                }
-            }
+            // getUser() {
+            //     if (this.getToken === '') {
+            //         this.user = null;
+            //     } else {
+            //         userGet().then(res => {
+            //             this.user = res.data;
+            //         });
+            //     }
+            // }
         },
 
-        computed: {
-            getToken: function() {
-                return this.$store.state.token;
-            },
-        },
+        // computed: {
+        //     getToken: function() {
+        //         return this.$store.state.token;
+        //     },
+        // },
 
         mounted: function () {
-            this.getUser();
         },
     }
 </script>

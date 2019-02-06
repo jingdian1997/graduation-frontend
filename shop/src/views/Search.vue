@@ -9,21 +9,20 @@
                     <el-main>
                         <div class="search">
                             <el-input v-model="query" style="width: 500px" placeholder="搜索图书名称"></el-input>
-                            <el-button class="button" type="danger" @click="getQuery" icon="el-icon-search"></el-button>
+                            <el-button class="button" type="danger" @click="getQuery" icon="el-icon-search">搜索</el-button>
                         </div>
                     </el-main>
                 </el-container>
             </el-header>
 
             <el-container style="margin: 0 100px">
-                <el-aside>
-                    <el-menu class="el-menu-demo" mode="vertical" @select="" background-color="#e4393c" text-color="white">
+                <el-aside v-if="category.length > 0">
+                    <el-menu class="el-menu-demo" mode="vertical" @select="" background-color="#545c64" text-color="#fff">
                         <el-menu-item v-for="(c, index) in category" :index="(index).toString()" @click="getJump(c.id)"  style="height: 50px">
                             {{c.name}}
                         </el-menu-item>
                     </el-menu>
                 </el-aside>
-
                 <el-main style="padding: 0 20px">
                     <div v-for="book in tableData">
                         <el-card class="box-card" shadow="hover">
@@ -84,9 +83,10 @@
                 tableData: [],
                 total: 0,
                 pageSize: 10,
-                totalPage: 0,
                 query: this.$route.params.query,
+                cid: this.$route.params.cid,
                 category: [],
+                pageNumber: 1,
             };
         },
 
@@ -99,34 +99,43 @@
                     query = this.query
                 }
 
-                bookList(1, 0, query).then(res => {
+                bookList(this.pageNumber, this.cid, query).then(res => {
                     this.tableData = res.data.records;
                     this.total = res.data.total;
-                    this.totalPage = Math.ceil(this.total / this.pageSize);
                 });
             },
 
             getCategory() {
-                categoryList(0).then(res => {
-                    this.category = res.data;
-                });
+                if (this.cid > 0) {
+                    categoryList(this.cid).then(res => {
+                        this.category = res.data;
+                    });
+                }
             },
 
             getJump(cid) {
-                this.$router.push({
-                    path: `/search2/${cid}/`,
-                });
-            },
-
-            getQuery() {
-                if (this.query === null || this.query === '') {
+                if (this.query === null || this.query === '' || this.query === undefined) {
                     this.$router.push({
-                        path: `/search/`,
+                        path: `/search/${cid}/`,
                     });
                     this.reload();
                 } else {
                     this.$router.push({
-                        path: `/search/${this.query}`,
+                        path: `/search/${cid}/${this.query}`,
+                    });
+                    this.reload();
+                }
+            },
+
+            getQuery() {
+                if (this.query === null || this.query === '' || this.query === undefined) {
+                    this.$alert('搜索内容不能为空', '内容为空', {
+                        confirmButtonText: '确定',
+                    });
+                    return false;
+                } else {
+                    this.$router.push({
+                        path: `/search/${this.cid}/${this.query}`,
                     });
                     this.reload();
                 }
