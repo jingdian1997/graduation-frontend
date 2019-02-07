@@ -31,8 +31,9 @@
                   很抱歉，本书已经下架
                 </div>
                 <div v-else>
-                  <el-button type="danger" @click="">加入购物车</el-button>
-                  <el-button type="info">加入/取消关注</el-button>
+                  <el-button type="danger" @click="addCart">加入购物车</el-button>
+                  <el-button type="primary" @click="addFocus" v-show="!focusOrNot">关注</el-button>
+                  <el-button type="info" @click="addFocus" v-show="focusOrNot">取消关注</el-button>
                 </div>
               </div>
             </el-card>
@@ -63,7 +64,7 @@
 </template>
 
 <script>
-    import {bookComments, bookOne} from '@/api';
+    import {bookComments, bookOne, createVisit, addCart, focusFocus, ifFocused} from '@/api';
     import PersonalNav from '@//components/PersonalNav.vue'
 
     export default {
@@ -77,6 +78,7 @@
             return {
                 bookData: {},
                 comments: [],
+                focusOrNot: false,
                 bid: this.$route.params.bid,
             };
         },
@@ -95,23 +97,36 @@
                 });
             },
 
-            postVisit(){
-                //TODO: 添加访问记录
+            createVisit(){
+                createVisit(this.bid);
             },
 
             addCart() {
-                //TODO: 添加购物车
+                addCart(this.bid).then(res => {
+                    this.$alert('商品已加入购物车', '操作成功', {
+                        confirmButtonText: '确定',
+                    });
+                });
             },
 
             addFocus() {
-                //TODO: 添加关注
+                focusFocus(this.bid).then(res => {
+                    this.focusOrNot = !this.focusOrNot;
+                });
+            },
+
+            ifFocused() {
+                ifFocused(this.bid).then(res => {
+                    this.focusOrNot = res.data;
+                });
             }
         },
 
         mounted: function () {
             this.getBook();
-            this.postVisit();
+            this.createVisit();
             this.getComments();
+            this.ifFocused();
         },
     }
 </script>

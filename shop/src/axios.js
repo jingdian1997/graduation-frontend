@@ -4,7 +4,7 @@ import QS from 'qs';
 
 //把整个项目的网络请求都写在这个文件中用export导出
 axios.defaults.timeout = 30000;
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 // axios.defaults.baseURL = 'http://122.112.244.157:8000/';
 axios.defaults.baseURL = 'http://localhost:8000/';
 
@@ -66,7 +66,7 @@ export function get(url, params){
 
 export function post(url, params) {
     return new Promise((resolve, reject) => {
-        axios.post(url, QS.stringify(params))
+        axios.post(url, JSON.stringify(params))
             .then(res => {
                 resolve(res.data);
             })

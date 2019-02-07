@@ -5,10 +5,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        token: '21b303d6e67cf6de1c370a908587acfb',
+        token: '51961eff26703d587d7c3c1648e028f5',
         user: {
-            id: null,
-            nickname: null,
+            id: 1,
+            nickname: 'Jade',
         },
     },
 
