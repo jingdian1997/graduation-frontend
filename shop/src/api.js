@@ -29,3 +29,7 @@ export const addCart = (bid) => post("cart/addTo/" + bid, null);
 export const focusFocus = (bid) => post("focus/focus/" + bid, null);
 
 export const ifFocused = (bid) => get("focus/ifFocused/" + bid);
+
+export const userLogin = (params) => post("user/login", params);
+
+export const userRegister = (params) => post("user/register", params);
