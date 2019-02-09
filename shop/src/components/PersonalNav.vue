@@ -47,10 +47,9 @@
             handleSelect2(key, keyPath) {
                 switch (key) {
                     case "1" :
-                        // this.$router.push('/login');个人中心
+                        this.$router.push('/main/home');
                         break;
                     case "2" :
-                        // this.$router.push('/login');
                         break;
                     case "3":
                         break;
