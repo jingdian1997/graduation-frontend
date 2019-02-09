@@ -9,7 +9,7 @@
                     <el-main>
                         <div class="search">
                             <el-input v-model="query" style="width: 500px" placeholder="搜索图书名称"></el-input>
-                            <el-button class="button" type="danger" @click="getQuery" icon="el-icon-search">搜索</el-button>
+                            <el-button class="button" type="primary" @click="getQuery" icon="el-icon-search">搜索</el-button>
                         </div>
                     </el-main>
                 </el-container>
@@ -17,7 +17,7 @@
 
             <el-container style="margin: 0 100px">
                 <el-aside v-if="category.length > 0">
-                    <el-menu class="el-menu-demo" mode="vertical" @select="" background-color="#545c64" text-color="#fff">
+                    <el-menu class="el-menu-demo" mode="vertical" @select="" background-color="#66b1ff" text-color="#fff">
                         <el-menu-item v-for="(c, index) in category" :index="(index).toString()" @click="getJump(c.id)"  style="height: 50px">
                             {{c.name}}
                         </el-menu-item>

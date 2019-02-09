@@ -2,7 +2,7 @@
     <div class="register">
         <img id="background" src="../assets/0.jpg" alt="">
         <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" class="demo-ruleForm login-container">
-            <h3 class="title">登录</h3>
+            <h3 class="title">注册</h3>
             <el-form-item prop="tel">
                 <el-input type="text" v-model="ruleForm2.tel" auto-complete="off" placeholder="手机号"></el-input>
             </el-form-item>
@@ -19,7 +19,7 @@
                 <el-input type="password" v-model="ruleForm2.pwd2" auto-complete="off" placeholder="再次输入密码"></el-input>
             </el-form-item>
             <el-form-item style="width:100%;">
-                <el-button type="primary" style="width:100%;" @click.native.prevent="handleSubmit2" :loading="logining">登录</el-button>
+                <el-button type="primary" style="width:100%;" @click.native.prevent="handleSubmit2" :loading="logining">注册</el-button>
             </el-form-item>
         </el-form>
     </div>
@@ -77,18 +77,19 @@
 
                         userRegister(params).then(res => {
                             this.logining = false;
-                            let { msg, code, data } = res;
+                            let { message, code, data } = res;
                             if (code !== 200) {
+                                this.logining = true;
                                 this.$message({
-                                    message: msg,
+                                    message: message,
                                     type: 'error',
                                 });
                             } else {
-                                this.$router.push({ path: '/' });
+                                this.$router.push({ path: '/login' });
                             }
                         });
                     } else {
-                        console.log('error submit!!');
+                        this.logining = true;
                         return false;
                     }
                 });
@@ -112,7 +113,7 @@
         border-radius: 5px;
         -moz-border-radius: 5px;
         background-clip: padding-box;
-        margin: 180px auto;
+        margin: 100px auto;
         width: 350px;
         padding: 35px 35px 15px 35px;
         background: #ccc;

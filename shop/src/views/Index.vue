@@ -9,19 +9,19 @@
                     <el-main>
                         <div class="search">
                             <el-input v-model="query" style="width: 500px" placeholder="搜索图书名称"></el-input>
-                            <el-button class="button" type="danger" @click="getQuery" icon="el-icon-search"></el-button>
+                            <el-button class="button" type="primary" @click="getQuery" icon="el-icon-search">搜索</el-button>
                         </div>
                     </el-main>
                 </el-container>
             </el-header>
-            <el-main>
+            <el-main style="margin: auto 50px;">
                 <el-container>
                     <el-aside height="100%" width="250px">
                         <Nav></Nav>
                     </el-aside>
                     <el-main style="padding-top: 0;padding-bottom: 0; padding-right: 0">
                         <div id="picture">
-                            <img alt="Vue logo" src="../assets/preview.jpg" :height="imgHeight + 'px'" style="width: 100%;"/>
+                            <img alt="Vue logo" src="../assets/index.jpg" :height="imgHeight + 'px'" style="width: 100%;"/>
                         </div>
                     </el-main>
                 </el-container>
@@ -29,7 +29,7 @@
                 <div id="main">
                     <el-card class="box-card" shadow="hover">
                         <div slot="header" class="clearfix" style="margin:-18px -20px; padding:10px 20px;
-                            background: #e4393c; text-align: left; font-size: 22px; color: white">
+                            background: #66b1ff; text-align: left; font-size: 22px; color: white">
                             新书上架
                         </div>
                         <el-row :gutter="20">
@@ -47,7 +47,7 @@
                     <div class="category" v-for="(item, index) in indexPageData">
                         <el-card class="box-card" shadow="hover">
                             <div slot="header" class="clearfix" style="margin:-18px -20px; padding:10px 20px;
-                            background: #e4393c; text-align: left; font-size: 22px; color: white">
+                            background: #66b1ff; text-align: left; font-size: 22px; color: white">
                                 <router-link class="link2" :to="{path:'/search/' + item.id}">
                                     {{item.name}}
                                 </router-link>
@@ -99,7 +99,7 @@
             getIndex() {
                 bookIndex().then(res => {
                     this.indexPageData = res.data;
-                    this.imgHeight = this.indexPageData.length * 50;
+                    this.imgHeight = this.indexPageData.length * 60;
                 });
             },
 

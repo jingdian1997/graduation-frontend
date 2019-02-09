@@ -33,3 +33,5 @@ export const ifFocused = (bid) => get("focus/ifFocused/" + bid);
 export const userLogin = (params) => post("user/login", params);
 
 export const userRegister = (params) => post("user/register", params);
+
+export const userLogout = () => post("user/logout");

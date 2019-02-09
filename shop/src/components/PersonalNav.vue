@@ -1,31 +1,30 @@
 <template>
     <div class="personalNav">
         <div v-if="user.id === null">
-            <el-menu class="el-menu-demo" mode="horizontal" @select="" background-color="#f5f5f5" text-color="black">
+            <el-menu class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#66b1ff" text-color="black">
                 <el-menu-item index="1">您好，请登录</el-menu-item>
                 <el-menu-item index="2">免费注册</el-menu-item>
             </el-menu>
         </div>
         <div v-else>
-            <el-menu v-model="user" class="el-menu-demo" mode="horizontal" @select="" background-color="#f5f5f5" text-color="black">
+            <el-menu v-model="user" class="el-menu-demo" mode="horizontal" @select="handleSelect2" background-color="#66b1ff" text-color="black">
                 <el-menu-item index="1">{{user.nickname}}，您好！</el-menu-item>
-                <el-submenu index="2">
-                    <template slot="title">个人中心</template>
-                    <el-menu-item index="2-1">我的购物车</el-menu-item>
-                    <el-menu-item index="2-2">我的订单</el-menu-item>
-                    <el-menu-item index="2-3">账户管理</el-menu-item>
-                </el-submenu>
-                <el-menu-item index="3">退出登录</el-menu-item>
+                <el-menu-item index="2">我的购物车</el-menu-item>
+                <el-menu-item index="3">我的订单</el-menu-item>
+                <el-menu-item index="4">账户管理</el-menu-item>
+                <el-menu-item index="5">退出登录</el-menu-item>
             </el-menu>
         </div>
     </div>
 </template>
 
 <script>
-    import {userGet} from '@/api';
+    import {userLogout} from '@/api';
 
     export default {
         name: "PersonalNav",
+
+        inject: ['reload'],
 
         data() {
             return {
@@ -34,34 +33,46 @@
         },
 
         methods: {
-            // getUser() {
-            //     if (this.getToken === '') {
-            //         this.user = null;
-            //     } else {
-            //         userGet().then(res => {
-            //             this.user = res.data;
-            //         });
-            //     }
-            // }
-        },
+            handleSelect(key, keyPath) {
+                switch (key) {
+                    case "1" :
+                        this.$router.push('/login');
+                        break;
+                    case "2" :
+                        this.$router.push('/register');
+                        break;
+                }
+            },
 
-        // computed: {
-        //     getToken: function() {
-        //         return this.$store.state.token;
-        //     },
-        // },
+            handleSelect2(key, keyPath) {
+                switch (key) {
+                    case "1" :
+                        // this.$router.push('/login');个人中心
+                        break;
+                    case "2" :
+                        // this.$router.push('/login');
+                        break;
+                    case "3":
+                        break;
+                    case "4" :
+                        break;
+                    case "5":
+                        this.logout();
+                        break;
+                }
+            },
 
-        mounted: function () {
+            logout () {
+                userLogout().then(res => {
+                    this.$store.commit('cleanToken');
+                    this.reload();
+                });
+            }
         },
     }
 </script>
 
 <style scoped>
-    .button {
-        background-color: #e4393c;
-        color: white;
-    }
-
     span {
         background-color: white;
     }

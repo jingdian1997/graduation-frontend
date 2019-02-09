@@ -44,7 +44,7 @@
 
   .link2 {
     color: white;
-    background-color: #e4393c;
+    background-color: #66b1ff;
     text-decoration: none;
   }
 

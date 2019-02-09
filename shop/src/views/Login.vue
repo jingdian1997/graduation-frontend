@@ -52,20 +52,21 @@
 
                         userLogin(loginParams).then(res => {
                             this.logining = false;
-                            let { msg, code, data } = res;
+                            let { message, code, data } = res;
                             if (code !== 200) {
+                                this.logining = true;
                                 this.$message({
-                                    message: msg,
+                                    message: message,
                                     type: 'error',
                                 });
                             } else {
-                                this.$store.commit('setToken', data.token);
+                                this.$store.commit('setToken', data.key);
                                 this.$store.commit('setUser', data.user);
                                 this.$router.push({ path: '/' });
                             }
                         });
                     } else {
-                        console.log('error submit!!');
+                        this.logining = true;
                         return false;
                     }
                 });
