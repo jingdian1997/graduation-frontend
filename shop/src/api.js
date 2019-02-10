@@ -18,6 +18,14 @@ export const bookList = (page, cid, query) => {
 
 export const userGet = () => get("user/get");
 
+export const userChangeInfo = (user) => post("user/changeInfo", user);
+
+export const userChangeTel = (tel) => post("user/changeTel", {tel: tel});
+
+export const userChangeMail = (mail) => post("user/changeMail", {mail: mail});
+
+export const userChangePwd = (pwdModel) => post("user/changePwd", pwdModel);
+
 export const bookComments = (bid) => get("comment/bookComments/" + bid + "/1/999");
 
 export const bookOne = (bid) => get("book/one/" + bid);

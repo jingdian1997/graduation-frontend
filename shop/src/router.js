@@ -3,6 +3,10 @@ import Router from 'vue-router'
 import Index from './views/Index.vue'
 import Main from './views/Main.vue'
 import Home from './views/home/Home.vue'
+import PersonInfo from './views/home/PersonInfo.vue'
+import PersonMail from './views/home/PersonMail.vue'
+import PersonTel from './views/home/PersonTel.vue'
+import PersonPassword from './views/home/PersonPassword.vue'
 
 Vue.use(Router);
 
@@ -36,10 +40,11 @@ export default new Router({
             iconCls: 'el-icon-message',//图标样式class
             children: [
                 { path: '/', component: Home, name: '主页', hidden: true },
-                // { path: '/table', component: Table, name: 'Table' },
-                // { path: '/form', component: Form, name: 'Form' },
-                // { path: '/user', component: user, name: '列表' },
-            ]
+                { path: '/info', component: PersonInfo, name: 'PersonInfo' },
+                { path: '/mail', component: PersonMail, name: 'PersonMail' },
+                { path: '/tel', component: PersonTel, name: 'PersonTel' },
+                { path: '/pwd', component: PersonPassword, name: 'PersonPassword' },
+            ],
         },
     ]
 });

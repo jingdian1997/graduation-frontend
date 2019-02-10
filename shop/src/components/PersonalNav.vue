@@ -47,7 +47,7 @@
             handleSelect2(key, keyPath) {
                 switch (key) {
                     case "1" :
-                        this.$router.push('/main/home');
+                        this.$router.push('/main/');
                         break;
                     case "2" :
                         break;
