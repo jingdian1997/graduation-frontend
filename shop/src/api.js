@@ -43,3 +43,19 @@ export const userLogin = (params) => post("user/login", params);
 export const userRegister = (params) => post("user/register", params);
 
 export const userLogout = () => post("user/logout");
+
+export const myComment = () => get("comment/myComments/1/999");
+
+export const deleteComment = (id) => post("comment/deleteComment/" + id);
+
+export const myVisit = () => get("visit/list/");
+
+export const deleteVisit = () => post("visit/delete");
+
+export const myFocus = () => get("focus/list");
+
+export const myCart = () => get("cart/getAll");
+
+export const deleteCart = (id) => post("cart/delete/" + id);
+
+export const changeCartAmount = (id, amount) => post("cart/changAmount", {id: id, amount: amount});

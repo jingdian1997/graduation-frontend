@@ -44,6 +44,10 @@
                             <i class="el-icon-setting"></i>
                             <span slot="title">我的订单</span>
                         </el-menu-item>
+                        <el-menu-item index="8">
+                            <i class="el-icon-phone"></i>
+                            <span slot="title">我的售后</span>
+                        </el-menu-item>
                         <!--<el-menu-item index="71">已完成订单</el-menu-item>-->
                         <!--<el-menu-item index="72">待收货订单</el-menu-item>-->
                         <!--<el-menu-item index="73">未支付订单</el-menu-item>-->
@@ -89,7 +93,27 @@
                     case "14":
                         this.$router.push("/mail");
                         break;
+                    case "2":
+                        break;
+                    case "3":
+                        this.$router.push("/cart");
+                        break;
+                    case "4":
+                        this.$router.push("/focus");
+                        break;
+                    case "5":
+                        this.$router.push("/visit");
+                        break;
+                    case "6":
+                        this.$router.push("/comment");
+                        break;
+                    case "7":
+                        // this.$router.push("/mail");
+                        break;
                     case "8":
+                        // this.$router.push("/mail");
+                        break;
+                    case "9":
                         this.logout();
                         break;
                 }

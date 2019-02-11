@@ -66,6 +66,10 @@
 </script>
 
 <style scoped>
+    * {
+        background-color: #eee;
+    }
+
     .login-container {
         -webkit-border-radius: 5px;
         border-radius: 5px;

@@ -7,6 +7,10 @@ import PersonInfo from './views/home/PersonInfo.vue'
 import PersonMail from './views/home/PersonMail.vue'
 import PersonTel from './views/home/PersonTel.vue'
 import PersonPassword from './views/home/PersonPassword.vue'
+import MyComment from './views/home/MyComment.vue'
+import MyVisit from './views/home/MyVisit.vue'
+import MyFocus from './views/home/MyFocus.vue'
+import MyCart from './views/home/MyCart.vue'
 
 Vue.use(Router);
 
@@ -44,6 +48,10 @@ export default new Router({
                 { path: '/mail', component: PersonMail, name: 'PersonMail' },
                 { path: '/tel', component: PersonTel, name: 'PersonTel' },
                 { path: '/pwd', component: PersonPassword, name: 'PersonPassword' },
+                { path: '/visit', component: MyVisit, name: 'MyVisit' },
+                { path: '/comment', component: MyComment, name: 'MyComment' },
+                { path: '/focus', component: MyFocus, name: 'MyFocus' },
+                { path: '/cart', component: MyCart, name: 'MyCart' },
             ],
         },
     ]

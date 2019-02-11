@@ -84,7 +84,7 @@
         },
 
         methods: {
-            getComments() {
+            getCart() {
                 bookComments(this.bid).then(res => {
                     this.comments = res.data.records;
                     console.log(this.comments);
@@ -125,7 +125,7 @@
         mounted: function () {
             this.getBook();
             this.createVisit();
-            this.getComments();
+            this.getCart();
             this.ifFocused();
         },
     }
