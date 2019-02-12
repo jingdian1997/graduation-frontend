@@ -2,8 +2,7 @@
     <div class="myCart">
         <h2>我的购物车</h2>
         <el-table :data="tableData" stripe style="width: 100%" ref="multipleTable" tooltip-effect="dark" @selection-change="handleSelectionChange">
-            <el-table-column type="selection" width="50">
-            </el-table-column>
+            <el-table-column type="selection" width="50"></el-table-column>
             <el-table-column prop="name" label="图书"></el-table-column>
             <el-table-column prop="price" label="价格"></el-table-column>
             <el-table-column prop="amount" label="数量">

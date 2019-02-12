@@ -11,6 +11,9 @@ import MyComment from './views/home/MyComment.vue'
 import MyVisit from './views/home/MyVisit.vue'
 import MyFocus from './views/home/MyFocus.vue'
 import MyCart from './views/home/MyCart.vue'
+import MyOrder from './views/home/MyOrder.vue'
+import OrderDetail from './views/home/OrderDetail.vue'
+import MyAddress from './views/home/MyAddress.vue'
 
 Vue.use(Router);
 
@@ -43,7 +46,7 @@ export default new Router({
             name: 'main',
             iconCls: 'el-icon-message',//图标样式class
             children: [
-                { path: '/', component: Home, name: '主页', hidden: true },
+                { path: '/', component: Home, name: 'Home', hidden: true },
                 { path: '/info', component: PersonInfo, name: 'PersonInfo' },
                 { path: '/mail', component: PersonMail, name: 'PersonMail' },
                 { path: '/tel', component: PersonTel, name: 'PersonTel' },
@@ -52,6 +55,9 @@ export default new Router({
                 { path: '/comment', component: MyComment, name: 'MyComment' },
                 { path: '/focus', component: MyFocus, name: 'MyFocus' },
                 { path: '/cart', component: MyCart, name: 'MyCart' },
+                { path: '/od/:id', component: OrderDetail, name: 'OrderDetail' },
+                { path: '/order', component: MyOrder, name: 'MyOrder' },
+                { path: '/address', component: MyAddress, name: 'MyAddress' },
             ],
         },
     ]

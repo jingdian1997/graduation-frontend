@@ -3,18 +3,17 @@
         <el-form label-position="left" label-width="0px" class="demo-ruleForm login-container">
             <h3 class="title">个人信息</h3>
             <el-form-item prop="name">
-                <el-input type="text" v-model="user.name" auto-complete="off" placeholder="姓名"></el-input>
+                <el-input type="text" v-model="user.name" auto-complete="off" placeholder="姓名" style="width: 220px"></el-input>
             </el-form-item>
             <el-form-item prop="sex">
                 <el-radio v-model="user.sex" label="男">男</el-radio>
                 <el-radio v-model="user.sex" label="女">女</el-radio>
             </el-form-item>
             <el-form-item prop="idCard">
-                <el-input type="text" v-model="user.idCard" auto-complete="off" placeholder="身份证号"></el-input>
+                <el-input type="text" v-model="user.idCard" auto-complete="off" placeholder="身份证号" style="width: 220px"></el-input>
             </el-form-item>
             <el-form-item prop="birthday">
-                <el-date-picker v-model="user.birthday" type="date" placeholder="生日">
-                </el-date-picker>
+                <el-date-picker v-model="user.birthday" auto-complete="off" type="date" placeholder="生日"></el-date-picker>
             </el-form-item>
             <el-form-item style="width:100%;">
                 <el-button type="primary" style="width:100%;" @click.native.prevent="changeInfo" :loading="logining">保存</el-button>
@@ -32,7 +31,7 @@
         data() {
             return {
                 logining: false,
-                user: null,
+                user: {},
             };
         },
 

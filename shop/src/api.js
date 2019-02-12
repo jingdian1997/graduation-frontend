@@ -59,3 +59,33 @@ export const myCart = () => get("cart/getAll");
 export const deleteCart = (id) => post("cart/delete/" + id);
 
 export const changeCartAmount = (id, amount) => post("cart/changAmount", {id: id, amount: amount});
+
+export const createOrder = (ids, aid) => post("order/createOrder", {cartsId: ids, addressId: aid});
+
+export const cancelOrder = (id) => post("order/cancelOrder/" + id);
+
+export const deleteOrder = (id) => post("order/deleteOrder/" + id);
+
+export const payOrder = (id) => post("order/payOrder/" + id);
+
+export const completeOrder = (id) => post("order/completeOrder/" + id);
+
+export const allAddress = () => get("address/all");
+
+export const addAddress = (address, recipient, tel, defaulting) => post("address/add", {
+    address: address,
+    recipient: recipient,
+    tel: tel,
+    defaulting: defaulting,
+});
+
+export const setDefaultAddress = (id) => post("address/setDefault/" + id);
+
+export const deleteAddress = (id) => post("address/delete/" + id);
+
+export const updateAddress = (id, address, recipient, tel) => post("address/update", {
+    id: id,
+    address: address,
+    recipient: recipient,
+    tel: tel,
+});

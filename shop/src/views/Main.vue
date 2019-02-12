@@ -1,13 +1,22 @@
 <template>
     <div class="main">
+        <el-header style="padding: 0">
+            <el-menu class="el-menu-demo" mode="horizontal" background-color="#545c64"
+                     text-color="#fff" active-text-color="#ffd04b" @select="handleSelect2">
+                <el-menu-item index="1">
+                    <span slot="title">{{this.$store.state.user.nickname}},个人中心</span>
+                </el-menu-item>
+                <el-menu-item index="2">
+                    <i class="el-icon-circle-close"></i>
+                    <span slot="title">退出登录</span>
+                </el-menu-item>
+            </el-menu>
+        </el-header>
         <el-container>
             <el-aside>
                 <el-col>
-                    <el-menu class="el-menu-vertical-demo" @select="handleOpen" background-color="#545c64" text-color="#fff"
+                    <el-menu class="el-menu-vertical-demo" @select="handleSelect" background-color="#545c64" text-color="#fff"
                              active-text-color="#ffd04b" style="height: 722px;">
-                        <el-menu-item index="0">
-                            <span slot="title">{{this.$store.state.user.nickname}},个人中心</span>
-                        </el-menu-item>
                         <el-submenu index="1">
                             <template slot="title">
                                 <i class="el-icon-location"></i>
@@ -48,13 +57,6 @@
                             <i class="el-icon-phone"></i>
                             <span slot="title">我的售后</span>
                         </el-menu-item>
-                        <!--<el-menu-item index="71">已完成订单</el-menu-item>-->
-                        <!--<el-menu-item index="72">待收货订单</el-menu-item>-->
-                        <!--<el-menu-item index="73">未支付订单</el-menu-item>-->
-                        <el-menu-item index="8">
-                            <i class="el-icon-circle-close"></i>
-                            <span slot="title">退出登录</span>
-                        </el-menu-item>
                     </el-menu>
                 </el-col>
             </el-aside>
@@ -77,7 +79,7 @@
         },
 
         methods: {
-            handleOpen(key, keyPath) {
+            handleSelect(key, keyPath) {
                 let path = keyPath[keyPath.length - 1];
                 console.log(path);
                 switch (path) {
@@ -94,6 +96,7 @@
                         this.$router.push("/mail");
                         break;
                     case "2":
+                        this.$router.push("/address");
                         break;
                     case "3":
                         this.$router.push("/cart");
@@ -108,12 +111,17 @@
                         this.$router.push("/comment");
                         break;
                     case "7":
-                        // this.$router.push("/mail");
+                        this.$router.push("/order");
                         break;
                     case "8":
                         // this.$router.push("/mail");
                         break;
-                    case "9":
+                }
+            },
+
+            handleSelect2(key, keyPath) {
+                switch (key) {
+                    case "2" :
                         this.logout();
                         break;
                 }
