@@ -89,3 +89,7 @@ export const updateAddress = (id, address, recipient, tel) => post("address/upda
     recipient: recipient,
     tel: tel,
 });
+
+export const orderDetail = (id) => get("order/one/" + id);
+
+export const orderList = () => get("order/list");
