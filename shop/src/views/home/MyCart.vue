@@ -20,12 +20,31 @@
                 </template>
             </el-table-column>
         </el-table>
-        <el-button @click="" type="text" size="small">提交订单</el-button>
+        <el-button @click="openDialog" type="primary" size="small">提交订单</el-button>
+
+        <el-dialog title="选择地址" :visible.sync="dialogVisible" width="50%" >
+            <el-table :data="addressData" ref="singleTable" stripe style="width: 100%" tooltip-effect="dark"
+                      @current-change="handleCurrentChange" highlight-current-row>
+                <el-table-column prop="address" label="地址">
+                    <template slot-scope="scope">
+                        <span>{{scope.row.address}}</span>
+                        <span v-if="scope.row.defaulting === true">(默认)</span>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="recipient" label="收件人"></el-table-column>
+                <el-table-column prop="tel" label="联系电话"></el-table-column>
+            </el-table>
+
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false">取 消</el-button>
+                <el-button type="primary" @click="confirmDialog">确 定</el-button>
+            </span>
+        </el-dialog>
     </div>
 </template>
 
 <script>
-    import {myCart, deleteCart, changeCartAmount} from '@/api'
+    import {myCart, deleteCart, changeCartAmount, allAddress, createOrder} from '@/api'
 
     export default {
         name: "MyCart",
@@ -34,6 +53,9 @@
             return {
                 tableData: [],
                 multipleSelection: [],
+                addressData: [],
+                addressId: null,
+                dialogVisible: false,
             };
         },
 
@@ -59,14 +81,50 @@
                 });
             },
 
-            handleSelectionChange(val) {
-                console.log(val);
-                this.multipleSelection = val;
+            getAddress() {
+                allAddress().then(res => {
+                    this.addressData = res.data;
+                    this.addressData.forEach(item => {
+                        if (item.defaulting === true){
+                            this.addressId = item.id;
+                        }
+                    });
+                });
             },
+
+            handleSelectionChange(val) {
+                for(let i = 0; i < val.length; ++i) {
+                    this.multipleSelection[i] = val[i].id;
+                }
+            },
+
+            openDialog() {
+                this.dialogVisible = true;
+            },
+
+            setCurrent(row) {
+                this.$refs.singleTable.setCurrentRow(row);
+            },
+
+            handleCurrentChange(val) {
+                this.addressId = val.id;
+                console.log(this.addressId);
+            },
+
+            confirmDialog() {
+                createOrder(this.multipleSelection, this.addressId).then(res => {
+                    let oid = res.data;
+                    this.$router.push({
+                        path: `/od/${oid}/`,
+                    });
+                });
+                this.dialogVisible = false;
+            }
         },
 
         mounted: function () {
             this.getCart();
+            this.getAddress();
         }
     }
 </script>

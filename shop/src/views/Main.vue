@@ -3,10 +3,10 @@
         <el-header style="padding: 0">
             <el-menu class="el-menu-demo" mode="horizontal" background-color="#545c64"
                      text-color="#fff" active-text-color="#ffd04b" @select="handleSelect2">
-                <el-menu-item index="1">
+                <el-menu-item index="1" style="width: 300px">
                     <span slot="title">{{this.$store.state.user.nickname}},个人中心</span>
                 </el-menu-item>
-                <el-menu-item index="2">
+                <el-menu-item index="2" style="float: right">
                     <i class="el-icon-circle-close"></i>
                     <span slot="title">退出登录</span>
                 </el-menu-item>
@@ -16,7 +16,7 @@
             <el-aside>
                 <el-col>
                     <el-menu class="el-menu-vertical-demo" @select="handleSelect" background-color="#545c64" text-color="#fff"
-                             active-text-color="#ffd04b" style="height: 722px;">
+                             active-text-color="#ffd04b" style="height: 100%;">
                         <el-submenu index="1">
                             <template slot="title">
                                 <i class="el-icon-location"></i>
@@ -114,7 +114,7 @@
                         this.$router.push("/order");
                         break;
                     case "8":
-                        // this.$router.push("/mail");
+                        this.$router.push("/refund");
                         break;
                 }
             },
@@ -130,7 +130,7 @@
             logout () {
                 userLogout().then(res => {
                     this.$store.commit('cleanToken');
-                    this.reload();
+                    this.$router.push('');
                 });
             },
         },

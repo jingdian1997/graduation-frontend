@@ -54,7 +54,6 @@
                             this.logining = false;
                             let { message, code, data } = res;
                             if (code !== 200) {
-                                this.logining = true;
                                 this.$message({
                                     message: message,
                                     type: 'error',
@@ -64,6 +63,8 @@
                                 this.$store.commit('setUser', data.user);
                                 this.$router.push({ path: '/' });
                             }
+                        }).catch(err => {
+                            this.logining = false;
                         });
                     } else {
                         this.logining = true;

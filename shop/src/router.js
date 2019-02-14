@@ -14,6 +14,7 @@ import MyCart from './views/home/MyCart.vue'
 import MyOrder from './views/home/MyOrder.vue'
 import OrderDetail from './views/home/OrderDetail.vue'
 import MyAddress from './views/home/MyAddress.vue'
+import OrderRefund from './views/home/OrderRefund.vue'
 
 Vue.use(Router);
 
@@ -58,6 +59,7 @@ export default new Router({
                 { path: '/od/:id', component: OrderDetail, name: 'OrderDetail' },
                 { path: '/order', component: MyOrder, name: 'MyOrder' },
                 { path: '/address', component: MyAddress, name: 'MyAddress' },
+                { path: '/refund', component: OrderRefund, name: 'OrderRefund' },
             ],
         },
     ]

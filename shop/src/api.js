@@ -44,6 +44,8 @@ export const userRegister = (params) => post("user/register", params);
 
 export const userLogout = () => post("user/logout");
 
+export const makeComment = () => post("comment/makeComment");
+
 export const myComment = () => get("comment/myComments/1/999");
 
 export const deleteComment = (id) => post("comment/deleteComment/" + id);
@@ -60,7 +62,7 @@ export const deleteCart = (id) => post("cart/delete/" + id);
 
 export const changeCartAmount = (id, amount) => post("cart/changAmount", {id: id, amount: amount});
 
-export const createOrder = (ids, aid) => post("order/createOrder", {cartsId: ids, addressId: aid});
+export const createOrder = (ids, aid) => post("order/createOrder", {cartIds: ids, addressId: aid});
 
 export const cancelOrder = (id) => post("order/cancelOrder/" + id);
 
