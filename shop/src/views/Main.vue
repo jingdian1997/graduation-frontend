@@ -1,5 +1,5 @@
 <template>
-    <div class="main">
+    <div class="main" style="height: 722px;">
         <el-header style="padding: 0">
             <el-menu class="el-menu-demo" mode="horizontal" background-color="#545c64"
                      text-color="#fff" active-text-color="#ffd04b" @select="handleSelect2">
@@ -12,11 +12,11 @@
                 </el-menu-item>
             </el-menu>
         </el-header>
-        <el-container>
+        <el-container style="height: 662px;">
             <el-aside>
                 <el-col>
                     <el-menu class="el-menu-vertical-demo" @select="handleSelect" background-color="#545c64" text-color="#fff"
-                             active-text-color="#ffd04b" style="height: 100%;">
+                             active-text-color="#fff" style="height: 662px;">
                         <el-submenu index="1">
                             <template slot="title">
                                 <i class="el-icon-location"></i>
@@ -46,11 +46,11 @@
                             <span slot="title">我的足迹</span>
                         </el-menu-item>
                         <el-menu-item index="6">
-                            <i class="el-icon-document"></i>
+                            <i class="el-icon-setting"></i>
                             <span slot="title">我的评价</span>
                         </el-menu-item>
                         <el-menu-item index="7">
-                            <i class="el-icon-setting"></i>
+                            <i class="el-icon-document"></i>
                             <span slot="title">我的订单</span>
                         </el-menu-item>
                         <el-menu-item index="8">
@@ -123,6 +123,7 @@
                 switch (key) {
                     case "2" :
                         this.logout();
+                        this.router.push('/login');
                         break;
                 }
             },

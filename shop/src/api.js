@@ -44,7 +44,12 @@ export const userRegister = (params) => post("user/register", params);
 
 export const userLogout = () => post("user/logout");
 
-export const makeComment = () => post("comment/makeComment");
+export const makeComment = (bid, score, odid, content) => post("comment/makeComment", {
+    bid: bid,
+    score: score,
+    odid: odid,
+    content: content,
+});
 
 export const myComment = () => get("comment/myComments/1/999");
 
@@ -95,3 +100,12 @@ export const updateAddress = (id, address, recipient, tel) => post("address/upda
 export const orderDetail = (id) => get("order/one/" + id);
 
 export const orderList = () => get("order/list");
+
+export const createRefund = (odid, amount, reason, type) => post("refund/create", {
+    odid: odid,
+    amount: amount,
+    reason: reason,
+    type: type,
+});
+
+export const getRefund = () => get("refund/get");
