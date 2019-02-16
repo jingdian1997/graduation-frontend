@@ -29,7 +29,7 @@
                 <div id="main">
                     <el-card class="box-card" shadow="hover">
                         <div slot="header" class="clearfix" style="margin:-18px -20px; padding:10px 20px;
-                            background: #66b1ff; text-align: left; font-size: 22px; color: white">
+                            background: #66CCFF; text-align: left; font-size: 22px; color: white">
                             新书上架
                         </div>
                         <el-row :gutter="20">
@@ -44,26 +44,73 @@
                         </el-row>
                     </el-card>
 
-                    <div class="category" v-for="(item, index) in indexPageData">
-                        <el-card class="box-card" shadow="hover">
-                            <div slot="header" class="clearfix" style="margin:-18px -20px; padding:10px 20px;
-                            background: #66b1ff; text-align: left; font-size: 22px; color: white">
-                                <router-link class="link2" :to="{path:'/search/' + item.id}">
-                                    {{item.name}}
+                    <el-card class="box-card" shadow="hover">
+                        <div slot="header" class="clearfix" style="margin:-18px -20px; padding:10px 20px;
+                            background: #EE82EE; text-align: left; font-size: 22px; color: white">
+                            万众瞩目
+                        </div>
+                        <el-row :gutter="20">
+                            <el-col :span="6" v-for="(book) in booksOfVisit">
+                                <router-link class="link" :to="{path:'/about/' + book.id}" color="red">
+                                    <img :src="'data:image/jpg;base64,' + book.picture" width="100px" height="150px"/>
+                                    <p>{{book.name}}</p>
+                                    <p>{{book.author}},{{book.publisher}}</p>
+                                    <p>￥{{book.price}}</p>
                                 </router-link>
-                            </div>
-                            <el-row :gutter="20">
-                                <el-col :span="6" v-for="(book) in item.books">
-                                    <router-link class="link" :to="{path:'/about/' + book.id}" color="red">
-                                        <img :src="'data:image/jpg;base64,' + book.picture" width="100px" height="150px"/>
-                                        <p>{{book.name}}</p>
-                                        <p>{{book.author}},{{book.publisher}}</p>
-                                        <p>￥{{book.price}}</p>
-                                    </router-link>
-                                </el-col>
-                            </el-row>
-                        </el-card>
-                    </div>
+                            </el-col>
+                        </el-row>
+                    </el-card>
+
+                    <el-card class="box-card" shadow="hover">
+                        <div slot="header" class="clearfix" style="margin:-18px -20px; padding:10px 20px;
+                            background: #ffff00; text-align: left; font-size: 22px; color: white">
+                            最多关注
+                        </div>
+                        <el-row :gutter="20">
+                            <el-col :span="6" v-for="(book) in booksOfFocus">
+                                <router-link class="link" :to="{path:'/about/' + book.id}" color="red">
+                                    <img :src="'data:image/jpg;base64,' + book.picture" width="100px" height="150px"/>
+                                    <p>{{book.name}}</p>
+                                    <p>{{book.author}},{{book.publisher}}</p>
+                                    <p>￥{{book.price}}</p>
+                                </router-link>
+                            </el-col>
+                        </el-row>
+                    </el-card>
+
+                    <el-card class="box-card" shadow="hover">
+                        <div slot="header" class="clearfix" style="margin:-18px -20px; padding:10px 20px;
+                            background: #EE0000; text-align: left; font-size: 22px; color: white">
+                            火热销售
+                        </div>
+                        <el-row :gutter="20">
+                            <el-col :span="6" v-for="(book) in booksOfSell">
+                                <router-link class="link" :to="{path:'/about/' + book.id}" color="red">
+                                    <img :src="'data:image/jpg;base64,' + book.picture" width="100px" height="150px"/>
+                                    <p>{{book.name}}</p>
+                                    <p>{{book.author}},{{book.publisher}}</p>
+                                    <p>￥{{book.price}}</p>
+                                </router-link>
+                            </el-col>
+                        </el-row>
+                    </el-card>
+
+                    <el-card class="box-card" shadow="hover">
+                        <div slot="header" class="clearfix" style="margin:-18px -20px; padding:10px 20px;
+                            background: #0080ff; text-align: left; font-size: 22px; color: white">
+                            好评如潮
+                        </div>
+                        <el-row :gutter="20">
+                            <el-col :span="6" v-for="(book) in booksOfScore">
+                                <router-link class="link" :to="{path:'/about/' + book.id}" color="red">
+                                    <img :src="'data:image/jpg;base64,' + book.picture" width="100px" height="150px"/>
+                                    <p>{{book.name}}</p>
+                                    <p>{{book.author}},{{book.publisher}}</p>
+                                    <p>￥{{book.price}}</p>
+                                </router-link>
+                            </el-col>
+                        </el-row>
+                    </el-card>
                 </div>
             </el-main>
             <el-footer>
@@ -74,7 +121,7 @@
 </template>
 
 <script>
-    import {bookIndex, newBooks} from '@/api';
+    import {bookIndex, categoryList} from '@/api';
     import Nav from '@/components/Nav.vue'
     import PersonalNav from '@//components/PersonalNav.vue'
 
@@ -88,8 +135,12 @@
 
         data () {
             return {
-                indexPageData: [],
+                category: [],
                 booksOfNew: [],
+                booksOfVisit: [],
+                booksOfFocus: [],
+                booksOfSell: [],
+                booksOfScore: [],
                 imgHeight: 0,
                 query: '',
             };
@@ -98,14 +149,18 @@
         methods: {
             getIndex() {
                 bookIndex().then(res => {
-                    this.indexPageData = res.data;
-                    this.imgHeight = this.indexPageData.length * 60;
+                    this.booksOfNew = res.data.new;
+                    this.booksOfScore = res.data.score;
+                    this.booksOfSell = res.data.sell;
+                    this.booksOfFocus = res.data.focus;
+                    this.booksOfVisit = res.data.visit;
                 });
             },
 
-            getNews() {
-                newBooks().then(res => {
-                    this.booksOfNew = res.data;
+            getCategoryList() {
+                categoryList(0).then(res => {
+                    this.category = res.data;
+                    this.imgHeight = this.category.length * 60;
                 });
             },
 
@@ -124,8 +179,8 @@
         },
 
         mounted: function (){
+            this.getCategoryList();
             this.getIndex();
-            this.getNews();
         },
     }
 </script>
