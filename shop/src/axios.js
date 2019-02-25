@@ -1,6 +1,5 @@
 import axios from 'axios';
 import store from '@/store'
-import QS from 'qs';
 
 //把整个项目的网络请求都写在这个文件中用export导出
 axios.defaults.timeout = 30000;
