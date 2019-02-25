@@ -1,6 +1,6 @@
 <template>
     <div class="nav">
-        <el-menu class="el-menu-demo" mode="vertical" @select="" background-color="#66b1ff" text-color="white">
+        <el-menu class="el-menu-demo" mode="vertical" @select="" background-color="#66ccff" text-color="white">
             <el-menu-item v-for="(c, index) in category" :index="(index).toString()" @click="getJump(c.id)" style="height: 60px">
                 {{c.name}}
             </el-menu-item>

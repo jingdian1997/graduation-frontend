@@ -1,18 +1,28 @@
 <template>
     <div class="login">
-        <img id="background" src="../assets/0.jpg" alt="">
-        <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" class="demo-ruleForm login-container">
-            <h3 class="title">登录</h3>
-            <el-form-item prop="account">
-                <el-input type="text" v-model="ruleForm2.account" auto-complete="off" placeholder="账号"></el-input>
-            </el-form-item>
-            <el-form-item prop="pwd">
-                <el-input type="password" v-model="ruleForm2.pwd" auto-complete="off" placeholder="密码"></el-input>
-            </el-form-item>
-            <el-form-item style="width:100%;">
-                <el-button type="primary" style="width:100%;" @click.native.prevent="handleSubmit2" :loading="logining">登录</el-button>
-            </el-form-item>
-        </el-form>
+        <el-container>
+            <el-header>
+                <h1 style="text-align: left; color: #66ccff; margin-top: 20px; margin-left: 50px">登录</h1>
+            </el-header>
+            <el-main>
+                <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" class="demo-ruleForm login-container">
+                    <h3 class="title">登录</h3>
+                    <el-form-item prop="account">
+                        <el-input type="text" v-model="ruleForm2.account" auto-complete="off" placeholder="账号"></el-input>
+                    </el-form-item>
+                    <el-form-item prop="pwd">
+                        <el-input type="password" v-model="ruleForm2.pwd" auto-complete="off" placeholder="密码"></el-input>
+                    </el-form-item>
+                    <el-form-item style="width:100%;">
+                        <el-button type="primary" style="width:100%;" @click.native.prevent="handleSubmit2" :loading="logining">登录</el-button>
+                    </el-form-item>
+                </el-form>
+                <img id="background" src="../assets/1.jpg" alt="">
+            </el-main>
+            <el-footer>
+                Copyright (C) 经典图书网 2015-2019, All Rights Reserved
+            </el-footer>
+        </el-container>
     </div>
 </template>
 
@@ -80,9 +90,9 @@
     #background {
         position:absolute;
         left:0;
-        top:0;
+        top:60px;
         width:100%;
-        height:100%;
+        height:580px;
         z-index:-1;
     }
 
@@ -91,8 +101,8 @@
         border-radius: 5px;
         -moz-border-radius: 5px;
         background-clip: padding-box;
-        margin: 180px auto;
-        width: 350px;
+        margin: 120px 50px 120px 700px;
+        width: 300px;
         padding: 35px 35px 15px 35px;
         background: #ccc;
         background-size: cover;

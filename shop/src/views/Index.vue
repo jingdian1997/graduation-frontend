@@ -9,7 +9,8 @@
                     <el-main>
                         <div class="search">
                             <el-input v-model="query" style="width: 500px" placeholder="搜索图书名称"></el-input>
-                            <el-button class="button" type="primary" @click="getQuery" icon="el-icon-search">搜索</el-button>
+                            <el-button class="button" type="primary" @click="getQuery" icon="el-icon-search"
+                                       style="background-color: #66ccff">搜索</el-button>
                         </div>
                     </el-main>
                 </el-container>
@@ -21,7 +22,23 @@
                     </el-aside>
                     <el-main style="padding-top: 0;padding-bottom: 0; padding-right: 0">
                         <div id="picture">
-                            <img alt="Vue logo" src="../assets/index.jpg" :height="imgHeight + 'px'" style="width: 100%;"/>
+                            <el-carousel :height="imgHeight + 'px'">
+                                <el-carousel-item :key="1">
+                                    <img alt="Vue logo" src="../assets/index1.jpg" :height="imgHeight + 'px'" style="width: 100%;"/>
+                                </el-carousel-item>
+                                <el-carousel-item :key="2">
+                                    <img alt="Vue logo" src="../assets/index2.jpg" :height="imgHeight + 'px'" style="width: 100%;"/>
+                                </el-carousel-item>
+                                <el-carousel-item :key="3">
+                                    <img alt="Vue logo" src="../assets/index3.jpg" :height="imgHeight + 'px'" style="width: 100%;"/>
+                                </el-carousel-item>
+                                <el-carousel-item :key="4">
+                                    <img alt="Vue logo" src="../assets/index4.jpg" :height="imgHeight + 'px'" style="width: 100%;"/>
+                                </el-carousel-item>
+                                <el-carousel-item :key="5">
+                                    <img alt="Vue logo" src="../assets/index5.jpg" :height="imgHeight + 'px'" style="width: 100%;"/>
+                                </el-carousel-item>
+                            </el-carousel>
                         </div>
                     </el-main>
                 </el-container>

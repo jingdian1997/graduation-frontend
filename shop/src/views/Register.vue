@@ -1,27 +1,37 @@
 <template>
     <div class="register">
-        <img id="background" src="../assets/0.jpg" alt="">
-        <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" class="demo-ruleForm login-container">
-            <h3 class="title">注册</h3>
-            <el-form-item prop="tel">
-                <el-input type="text" v-model="ruleForm2.tel" auto-complete="off" placeholder="手机号"></el-input>
-            </el-form-item>
-            <el-form-item prop="mail">
-                <el-input type="text" v-model="ruleForm2.mail" auto-complete="off" placeholder="邮箱"></el-input>
-            </el-form-item>
-            <el-form-item prop="nickname">
-                <el-input type="text" v-model="ruleForm2.nickname" auto-complete="off" placeholder="昵称"></el-input>
-            </el-form-item>
-            <el-form-item prop="pwd">
-                <el-input type="password" v-model="ruleForm2.pwd" auto-complete="off" placeholder="密码"></el-input>
-            </el-form-item>
-            <el-form-item prop="pwd2">
-                <el-input type="password" v-model="ruleForm2.pwd2" auto-complete="off" placeholder="再次输入密码"></el-input>
-            </el-form-item>
-            <el-form-item style="width:100%;">
-                <el-button type="primary" style="width:100%;" @click.native.prevent="handleSubmit2" :loading="logining">注册</el-button>
-            </el-form-item>
-        </el-form>
+        <el-container>
+            <el-header>
+                <h1 style="text-align: left; color: #66ccff; margin-top: 20px; margin-left: 50px">注册</h1>
+            </el-header>
+            <el-main>
+                <img id="background" src="../assets/1.jpg" alt="">
+                <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" class="demo-ruleForm login-container">
+                    <h3 class="title">注册</h3>
+                    <el-form-item prop="tel">
+                        <el-input type="text" v-model="ruleForm2.tel" auto-complete="off" placeholder="手机号"></el-input>
+                    </el-form-item>
+                    <el-form-item prop="mail">
+                        <el-input type="text" v-model="ruleForm2.mail" auto-complete="off" placeholder="邮箱"></el-input>
+                    </el-form-item>
+                    <el-form-item prop="nickname">
+                        <el-input type="text" v-model="ruleForm2.nickname" auto-complete="off" placeholder="昵称"></el-input>
+                    </el-form-item>
+                    <el-form-item prop="pwd">
+                        <el-input type="password" v-model="ruleForm2.pwd" auto-complete="off" placeholder="密码"></el-input>
+                    </el-form-item>
+                    <el-form-item prop="pwd2">
+                        <el-input type="password" v-model="ruleForm2.pwd2" auto-complete="off" placeholder="再次输入密码"></el-input>
+                    </el-form-item>
+                    <el-form-item style="width:100%;">
+                        <el-button type="primary" style="width:100%;" @click.native.prevent="handleSubmit2" :loading="logining">注册</el-button>
+                    </el-form-item>
+                </el-form>
+            </el-main>
+        </el-container>
+        <el-footer>
+            Copyright (C) 经典图书网 2015-2019, All Rights Reserved
+        </el-footer>
     </div>
 </template>
 
@@ -103,9 +113,9 @@
     #background {
         position:absolute;
         left:0;
-        top:0;
+        top:60px;
         width:100%;
-        height:100%;
+        height:600px;
         z-index:-1;
     }
 
@@ -114,7 +124,7 @@
         border-radius: 5px;
         -moz-border-radius: 5px;
         background-clip: padding-box;
-        margin: 100px auto;
+        margin: 30px 0 40px 900px;
         width: 350px;
         padding: 35px 35px 15px 35px;
         background: #ccc;
