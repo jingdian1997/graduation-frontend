@@ -5,12 +5,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-      state: {
-          token: '',
-          admin: {
-              id: null,
-              name: null,
-          },
+      token: '',
+      admin: {
+          id: null,
+          name: null,
       },
   },
   mutations: {

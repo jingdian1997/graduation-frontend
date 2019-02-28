@@ -1,12 +1,11 @@
 <template>
-    <div class="login">
+    <div class="index">
         <el-container>
             <el-header>
-                <h1 style="text-align: left; color: #66ccff; margin-top: 20px; margin-left: 50px">登录</h1>
+                <h1 style="color: #66ccff; margin-top: 20px">登录</h1>
             </el-header>
             <el-main>
                 <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" class="demo-ruleForm login-container">
-                    <h3 class="title">登录</h3>
                     <el-form-item prop="account">
                         <el-input type="text" v-model="ruleForm2.account" auto-complete="off" placeholder="账号"></el-input>
                     </el-form-item>
@@ -19,7 +18,7 @@
                 </el-form>
                 <img id="background" src="../assets/1.jpg" alt="">
             </el-main>
-            <el-footer>
+            <el-footer style="color: white">
                 Copyright (C) 经典图书网 2015-2019, All Rights Reserved
             </el-footer>
         </el-container>
@@ -27,10 +26,10 @@
 </template>
 
 <script>
-    import {userLogin} from '@/api'
+    import {login} from '@/api'
 
     export default {
-        name: "Login",
+        name: "Index",
 
         data () {
             return {
@@ -60,7 +59,7 @@
                             pwd: this.ruleForm2.pwd
                         };
 
-                        userLogin(loginParams).then(res => {
+                        login(loginParams).then(res => {
                             this.logining = false;
                             let { message, code, data } = res;
                             if (code !== 200) {
@@ -70,8 +69,9 @@
                                 });
                             } else {
                                 this.$store.commit('setToken', data.key);
-                                this.$store.commit('setUser', data.user);
-                                this.$router.push({ path: '/' });
+                                console.log(data);
+                                this.$store.commit('setAdmin', data.admin);
+                                this.$router.push({ path: '/home' });
                             }
                         }).catch(err => {
                             this.logining = false;
@@ -90,9 +90,9 @@
     #background {
         position:absolute;
         left:0;
-        top:60px;
+        top:0;
         width:100%;
-        height:580px;
+        height:100%;
         z-index:-1;
     }
 
@@ -101,7 +101,7 @@
         border-radius: 5px;
         -moz-border-radius: 5px;
         background-clip: padding-box;
-        margin: 120px 50px 120px 700px;
+        margin: 120px auto;
         width: 300px;
         padding: 35px 35px 15px 35px;
         background: #ccc;
