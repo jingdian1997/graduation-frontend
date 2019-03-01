@@ -12,21 +12,11 @@
         </el-menu-item>
       </el-menu>
     </el-header>
-    <el-container style="height: 662px;">
+    <el-container style="height: 660px;">
       <el-aside>
         <el-col>
           <el-menu class="el-menu-vertical-demo" @select="handleSelect" background-color="#545c64" text-color="#fff"
-                   active-text-color="#fff" style="height: 662px;">
-            <el-submenu index="1">
-              <template slot="title">
-                <i class="el-icon-location"></i>
-                <span>账户管理</span>
-              </template>
-              <el-menu-item-group>
-                <el-menu-item index="11">个人信息</el-menu-item>
-                <el-menu-item index="12">修改密码</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
+                   active-text-color="#fff" style="height: 660px;">
             <el-submenu index="2">
               <template slot="title">
                 <i class="el-icon-goods"></i>
@@ -37,20 +27,13 @@
                 <el-menu-item index="22">图书管理</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
-            <el-submenu index="3">
-              <template slot="title">
+            <el-menu-item index="3">
                 <i class="el-icon-document"></i>
                 <span>订单管理</span>
-              </template>
-              <el-menu-item-group>
-                <el-menu-item index="31">未确认订单</el-menu-item>
-                <el-menu-item index="32">未发货订单</el-menu-item>
-                <el-menu-item index="33">已发货订单</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
+            </el-menu-item>
             <el-menu-item index="4">
               <i class="el-icon-phone"></i>
-              <span slot="title">评论管理</span>
+              <span slot="title">售后管理</span>
             </el-menu-item>
             <el-menu-item index="5">
               <i class="el-icon-circle-plus"></i>
@@ -82,25 +65,14 @@
                 let path = keyPath[keyPath.length - 1];
                 console.log(path);
                 switch (path) {
-                    case "11":
-                        // this.$router.push("/info");
-                        break;
-                    case "12":
-                        // this.$router.push("/pwd");
-                        break;
                     case "21":
                         // this.$router.push("/tel");
                         break;
                     case "22":
                         // this.$router.push("/mail");
                         break;
-                    case "31":
-                        // this.$router.push("/address");
-                        break;
-                    case "32":
-                        // this.$router.push("/cart");
-                        break;
-                    case "33":
+                    case "3":
+                        this.$router.push("/order");
                         break;
                     case "4":
                         break;

@@ -77,7 +77,7 @@
             <p>物流单号：{{orders.deliverNo}}</p>
             <p>
                 状态：
-                <span v-if="orders.status === -1">已删除</span>
+                <span v-if="orders.status === -1">已取消</span>
                 <span v-if="orders.status === 0">未支付</span>
                 <span v-if="orders.status === 1">已支付</span>
                 <span v-if="orders.status === 2">商家确认</span>
