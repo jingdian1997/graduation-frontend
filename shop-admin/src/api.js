@@ -14,3 +14,21 @@ export const deliverOrder = (oid, deliverNo) => post("order/deliverOrder", {
     oid: oid,
     deliverNo: deliverNo,
 });
+
+export const categoryList = (cid) => get("category/list/" + cid);
+
+export const categoryOne = (id) => get("category/one/" + id);
+
+export const categoryInsert = (name, parentId) => post("category/insert", {
+    parentId: parentId,
+    name: name,
+});
+
+export const categoryDelete = (id) => post("category/delete/" + id);
+
+export const categoryActive = (id) => post("category/active/" + id);
+
+export const categoryUpdate = (id, name) => post("category/update", {
+    id: id,
+    name: name,
+});

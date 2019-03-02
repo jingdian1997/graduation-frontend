@@ -17,16 +17,14 @@
         <el-col>
           <el-menu class="el-menu-vertical-demo" @select="handleSelect" background-color="#545c64" text-color="#fff"
                    active-text-color="#fff" style="height: 660px;">
-            <el-submenu index="2">
-              <template slot="title">
-                <i class="el-icon-goods"></i>
-                <span>商品管理</span>
-              </template>
-              <el-menu-item-group>
-                <el-menu-item index="21">分类管理</el-menu-item>
-                <el-menu-item index="22">图书管理</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
+            <el-menu-item index="1">
+              <i class="el-icon-document"></i>
+              <span>类目管理</span>
+            </el-menu-item>
+            <el-menu-item index="2">
+              <i class="el-icon-goods"></i>
+              <span>图书管理</span>
+            </el-menu-item>
             <el-menu-item index="3">
                 <i class="el-icon-document"></i>
                 <span>订单管理</span>
@@ -62,14 +60,12 @@
 
         methods: {
             handleSelect(key, keyPath) {
-                let path = keyPath[keyPath.length - 1];
-                console.log(path);
-                switch (path) {
-                    case "21":
-                        // this.$router.push("/tel");
+                switch (key) {
+                    case "1":
+                        this.$router.push("/category/0");
                         break;
-                    case "22":
-                        // this.$router.push("/mail");
+                    case "2":
+                        this.$router.push("/book");
                         break;
                     case "3":
                         this.$router.push("/order");

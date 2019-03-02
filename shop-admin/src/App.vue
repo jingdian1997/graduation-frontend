@@ -7,6 +7,7 @@
 <script>
     export default {
         name: 'app',
+
         provide() {
             return {
                 reload: this.reload,
@@ -43,7 +44,7 @@
 
   .link2 {
     color: white;
-    background-color: #66b1ff;
+    background-color: #66ccff;
     text-decoration: none;
   }
 

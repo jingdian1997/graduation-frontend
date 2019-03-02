@@ -9,6 +9,7 @@ export default new Vuex.Store({
       admin: {
           id: null,
           name: null,
+          role: null,
       },
   },
   mutations: {
@@ -19,6 +20,7 @@ export default new Vuex.Store({
       setAdmin(state, theAdmin) {
           state.admin.id = theAdmin.id;
           state.admin.name = theAdmin.name;
+          state.admin.role = theAdmin.role;
       },
 
       cleanToken(state) {
@@ -26,6 +28,7 @@ export default new Vuex.Store({
           state.admin= {
               id: null,
               name: null,
+              role: null,
           };
       }
   },

@@ -83,6 +83,12 @@
                 });
             },
         },
+
+        mounted: function () {
+            if (this.$store.state.token !== '') {
+                this.$router.push('/home');
+            }
+        }
     }
 </script>
 
