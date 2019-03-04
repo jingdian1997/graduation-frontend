@@ -22,7 +22,6 @@
                     <el-table-column label="操作" width="200">
                         <template slot-scope="scope">
                             <el-button v-if="scope.row.del === false" @click="getJump(scope.row.id)" type="text">查看下一级</el-button>
-                            <el-button v-if="scope.row.del === false" @click="openDialog2(scope.row)" type="text">禁用</el-button>
                             <el-button v-if="scope.row.del === false" @click="handleDelete(scope.row.id)" type="text">禁用</el-button>
                             <el-button v-if="scope.row.del === true" @click="handleActive(scope.row.id)" type="text">启用</el-button>
                         </template>
@@ -35,14 +34,6 @@
                     <span slot="footer" class="dialog-footer">
                         <el-button @click="dialogVisible = false">取 消</el-button>
                         <el-button type="primary" @click="handleInsert">确 定</el-button>
-                    </span>
-                </el-dialog>
-
-                <el-dialog title="修改类目名称" :visible.sync="dialogVisible2" width="50%">
-                    <el-input v-model="newCategoryName" placeholder="请输入新类名"></el-input>
-                    <span slot="footer" class="dialog-footer">
-                        <el-button @click="dialogVisible2 = false">取 消</el-button>
-                        <el-button type="primary" @click="handleUpdate">确 定</el-button>
                     </span>
                 </el-dialog>
             </el-main>
@@ -64,7 +55,6 @@
                 list: [],
                 id: this.$route.params.id,
                 dialogVisible: false,
-                dialogVisible2: false,
                 newCategoryName: '',
                 editId: null,
             };
@@ -123,12 +113,6 @@
                 this.newCategoryName = '';
             },
 
-            openDialog2(row) {
-                this.dialogVisible2 = true;
-                this.newCategoryName = row.name;
-                this.editId = row.id;
-            },
-
             handleInsert() {
                 categoryInsert(this.newCategoryName, this.id).then(res => {
                     if (res.code === 200) {
@@ -148,7 +132,6 @@
                 categoryUpdate(this.editId, this.newCategoryName).then(res => {
                     if (res.code === 200) {
                         this.$message("操作成功！");
-                        this.dialogVisible2 = false;
                         this.getCategory();
                     } else {
                         this.$message({

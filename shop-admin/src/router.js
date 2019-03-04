@@ -7,6 +7,8 @@ import Order from './components/Order.vue'
 import OrderDetail from './components/OrderDetail.vue'
 import Category from './components/Category.vue'
 import Book from './components/Book.vue'
+import BookDetail from './components/BookDetail.vue'
+import BookInsert from './components/BookInsert.vue'
 
 Vue.use(Router);
 
@@ -23,6 +25,8 @@ export default new Router({
                 { path: '/od/:id', component: OrderDetail, name: 'OrderDetail' },
                 { path: '/category/:id', component: Category, name: 'Category' },
                 { path: '/book/', component: Book, name: 'Book' },
+                { path: '/bookDetail/:id', component: BookDetail, name: 'BookDetail' },
+                { path: '/bookInsert', component: BookInsert, name: 'BookInsert' },
             ],
         }, {
             path: '/',

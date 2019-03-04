@@ -32,3 +32,39 @@ export const categoryUpdate = (id, name) => post("category/update", {
     id: id,
     name: name,
 });
+
+export const bookInsert = (ISBN, name, author, publisher, publishDate, price, picture, description, cid) => post("book/insert", {
+    ISBN: ISBN,
+    name: name,
+    author: author,
+    publisher: publisher,
+    publishDate: publishDate,
+    price: price,
+    picture: picture,
+    description: description,
+    cid: cid,
+});
+
+export const bookUpdate = (id, description) => post("book/update", {
+    id: id,
+    description: description,
+});
+
+export const bookUpdatePicture = (id, picture) => post("", {
+    id: id,
+    picture: picture,
+});
+
+export const bookPullOff = (id) => post("book/pullOff/" + id);
+
+export const bookList = (cid, query) => {
+    let queryString = "?category=" + cid;
+
+    if (query !== null && query !== '') {
+        queryString = queryString + "&query=" + query;
+    }
+
+    return get("book/list/1/999" + queryString);
+};
+
+export const bookOne = (id) => get("book/one/" + id);
