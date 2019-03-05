@@ -31,7 +31,7 @@
                                 <el-row :gutter="20">
                                     <el-col :span="8">
                                         <div class="grid-content bg-purple">
-                                            <img :src="'data:image/jpg;base64,' + book.picture" width="100px" height="100px"/>
+                                            <img :src="book.picture" width="100px" height="100px"/>
                                         </div>
                                     </el-col>
                                     <el-col :span="6">

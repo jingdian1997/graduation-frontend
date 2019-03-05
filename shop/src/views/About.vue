@@ -7,7 +7,7 @@
       <el-main>
         <el-container>
           <el-aside>
-            <img :src="'data:image/jpg;base64,' + bookData.picture" width="300px" height="300px"/>
+            <img :src="bookData.picture" width="300px" height="300px"/>
           </el-aside>
           <el-main class="right-main">
             <el-card class="box-card" style="background-color: #ebebeb; height: 400px">

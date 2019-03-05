@@ -52,7 +52,7 @@
                         <el-row :gutter="20">
                             <el-col :span="6" v-for="(book) in booksOfNew">
                                 <router-link class="link" :to="{path:'/about/' + book.id}" color="red">
-                                    <img :src="'data:image/jpg;base64,' + book.picture" width="100px" height="150px"/>
+                                    <img :src="book.picture" width="100px" height="150px"/>
                                     <p>{{book.name}}</p>
                                     <p>{{book.author}},{{book.publisher}}</p>
                                     <p>￥{{book.price}}</p>
@@ -69,7 +69,7 @@
                         <el-row :gutter="20">
                             <el-col :span="6" v-for="(book) in booksOfVisit">
                                 <router-link class="link" :to="{path:'/about/' + book.id}" color="red">
-                                    <img :src="'data:image/jpg;base64,' + book.picture" width="100px" height="150px"/>
+                                    <img :src="book.picture" width="100px" height="150px"/>
                                     <p>{{book.name}}</p>
                                     <p>{{book.author}},{{book.publisher}}</p>
                                     <p>￥{{book.price}}</p>
@@ -86,7 +86,7 @@
                         <el-row :gutter="20">
                             <el-col :span="6" v-for="(book) in booksOfFocus">
                                 <router-link class="link" :to="{path:'/about/' + book.id}" color="red">
-                                    <img :src="'data:image/jpg;base64,' + book.picture" width="100px" height="150px"/>
+                                    <img :src="book.picture" width="100px" height="150px"/>
                                     <p>{{book.name}}</p>
                                     <p>{{book.author}},{{book.publisher}}</p>
                                     <p>￥{{book.price}}</p>
@@ -103,7 +103,7 @@
                         <el-row :gutter="20">
                             <el-col :span="6" v-for="(book) in booksOfSell">
                                 <router-link class="link" :to="{path:'/about/' + book.id}" color="red">
-                                    <img :src="'data:image/jpg;base64,' + book.picture" width="100px" height="150px"/>
+                                    <img :src="book.picture" width="100px" height="150px"/>
                                     <p>{{book.name}}</p>
                                     <p>{{book.author}},{{book.publisher}}</p>
                                     <p>￥{{book.price}}</p>
@@ -120,7 +120,7 @@
                         <el-row :gutter="20">
                             <el-col :span="6" v-for="(book) in booksOfScore">
                                 <router-link class="link" :to="{path:'/about/' + book.id}" color="red">
-                                    <img :src="'data:image/jpg;base64,' + book.picture" width="100px" height="150px"/>
+                                    <img :src="book.picture" width="100px" height="150px"/>
                                     <p>{{book.name}}</p>
                                     <p>{{book.author}},{{book.publisher}}</p>
                                     <p>￥{{book.price}}</p>
