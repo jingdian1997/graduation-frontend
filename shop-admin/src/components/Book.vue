@@ -2,7 +2,7 @@
     <div class="book">
         <el-container>
             <el-header>
-                <div style="text-align: left; font-size: 20px;">图书管理</div>
+                <div style="text-align: left; font-size: 20px;">当前位置：图书管理</div>
             </el-header>
             <el-main>
                 <el-table :data="list" stripe style="width: 100%" tooltip-effect="dark">
@@ -10,6 +10,7 @@
                     <el-table-column prop="categories" label="分类">
                         <template slot-scope="scope">
                             <span v-for="c in scope.row.categories">{{c.name}} << </span>
+                            <span>图书</span>
                         </template>
                     </el-table-column>
                     <el-table-column prop="author" label="图书"></el-table-column>

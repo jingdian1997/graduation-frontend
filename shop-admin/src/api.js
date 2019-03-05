@@ -34,7 +34,7 @@ export const categoryUpdate = (id, name) => post("category/update", {
 });
 
 export const bookInsert = (ISBN, name, author, publisher, publishDate, price, picture, description, cid) => post("book/insert", {
-    ISBN: ISBN,
+    isbn: ISBN,
     name: name,
     author: author,
     publisher: publisher,
@@ -50,7 +50,7 @@ export const bookUpdate = (id, description) => post("book/update", {
     description: description,
 });
 
-export const bookUpdatePicture = (id, picture) => post("", {
+export const bookUpdatePicture = (id, picture) => post("book/updatePicture", {
     id: id,
     picture: picture,
 });
