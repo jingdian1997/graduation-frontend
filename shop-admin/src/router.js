@@ -9,6 +9,8 @@ import Category from './components/Category.vue'
 import Book from './components/Book.vue'
 import BookDetail from './components/BookDetail.vue'
 import BookInsert from './components/BookInsert.vue'
+import OrderRefund from './components/OrderRefund.vue'
+import Comment from './components/Comment.vue'
 
 Vue.use(Router);
 
@@ -27,6 +29,8 @@ export default new Router({
                 { path: '/book/', component: Book, name: 'Book' },
                 { path: '/bookDetail/:id', component: BookDetail, name: 'BookDetail' },
                 { path: '/bookInsert', component: BookInsert, name: 'BookInsert' },
+                { path: '/refund', component: OrderRefund, name: 'OrderRefund' },
+                { path: '/comment', component: Comment, name: 'Comment' },
             ],
         }, {
             path: '/',

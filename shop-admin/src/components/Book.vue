@@ -13,7 +13,7 @@
                             <span>图书</span>
                         </template>
                     </el-table-column>
-                    <el-table-column prop="author" label="图书"></el-table-column>
+                    <el-table-column prop="author" label="作者"></el-table-column>
                     <el-table-column prop="publisher" label="出版社"></el-table-column>
                     <el-table-column prop="price" label="定价"></el-table-column>
                     <el-table-column prop="del" label="状态">

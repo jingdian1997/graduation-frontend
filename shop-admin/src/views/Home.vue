@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <el-header style="padding: 0">
-      <el-menu class="el-menu-demo" mode="horizontal" background-color="#545c64"
-               text-color="#fff" active-text-color="#ffd04b" @select="handleSelect2">
+      <el-menu class="el-menu-demo" mode="horizontal" background-color="#545c64" text-color="#fff"
+               active-text-color="#ffd04b" @select="handleSelect2" :default-active="1">
         <el-menu-item index="1" style="width: 300px">
           <span slot="title">{{this.$store.state.admin.name}},欢迎</span>
         </el-menu-item>
@@ -71,8 +71,10 @@
                         this.$router.push("/order");
                         break;
                     case "4":
+                        this.$router.push("/refund");
                         break;
                     case "5":
+                        this.$router.push("/comment");
                         break;
                 }
             },
@@ -81,7 +83,7 @@
                 switch (key) {
                     case "2" :
                         this.logout();
-                        this.router.push('/');
+                        this.$router.push('/');
                         break;
                 }
             },

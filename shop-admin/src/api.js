@@ -68,3 +68,17 @@ export const bookList = (cid, query) => {
 };
 
 export const bookOne = (id) => get("book/one/" + id);
+
+export const refundList = () => get("refund/list");
+
+export const refundApprove = (id) => post("refund/approve/" + id);
+
+export const refundRefuse = (id, refuseReason) => post("refund/refuse", {
+    id: id,
+    refuseReason: refuseReason,
+});
+
+export const refundDeal = (id, pay) => post("refund/deal", {
+    id: id,
+    pay: pay,
+});
