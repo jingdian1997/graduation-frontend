@@ -85,11 +85,13 @@
 
             openDialog(row) {
                 this.dialogVisible = true;
+                this.refuseReason = '';
                 this.refuseId = row.id;
             },
 
             openDialog2(row) {
                 this.dialogVisible2 = true;
+                this.pay = 0;
                 this.refuseId2 = row.id;
             },
 

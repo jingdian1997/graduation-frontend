@@ -135,6 +135,7 @@
 
             openDeliver(id) {
                 this.dialogVisible = true;
+                this.deliverNo = '';
                 this.deliverId = id;
             },
         },

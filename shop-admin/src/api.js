@@ -82,3 +82,10 @@ export const refundDeal = (id, pay) => post("refund/deal", {
     id: id,
     pay: pay,
 });
+
+export const commentList = () => get("comment/list/1/999");
+
+export const commentReply = (id, reply) => post("comment/replyComment", {
+    id: id,
+    reply: reply,
+});

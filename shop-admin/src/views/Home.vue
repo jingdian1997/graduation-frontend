@@ -2,7 +2,7 @@
   <div class="home">
     <el-header style="padding: 0">
       <el-menu class="el-menu-demo" mode="horizontal" background-color="#545c64" text-color="#fff"
-               active-text-color="#ffd04b" @select="handleSelect2" :default-active="1">
+               active-text-color="#ffd04b" @select="handleSelect2" :default-active="defaultActive">
         <el-menu-item index="1" style="width: 300px">
           <span slot="title">{{this.$store.state.admin.name}},欢迎</span>
         </el-menu-item>
@@ -55,6 +55,7 @@
 
         data() {
             return {
+                defaultActive: "1",
             };
         },
 
