@@ -4,8 +4,8 @@ import store from '@/store'
 //把整个项目的网络请求都写在这个文件中用export导出
 axios.defaults.timeout = 30000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
-// axios.defaults.baseURL = 'http://122.112.244.157:8001/';
-axios.defaults.baseURL = 'http://localhost:8001/';
+axios.defaults.baseURL = 'http://122.112.244.157:8001/';
+// axios.defaults.baseURL = 'http://localhost:8001/';
 
 axios.interceptors.request.use(
     config => {
