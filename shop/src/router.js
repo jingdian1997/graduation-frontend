@@ -25,6 +25,10 @@ export default new Router({
             name: 'index',
             component: Index
         }, {
+            path: '/index',
+            name: 'index',
+            component: Index
+        }, {
             path: '/about/:bid',
             name: 'about',
             // which is lazy-loaded when the route is visited.

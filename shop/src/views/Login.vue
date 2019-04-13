@@ -101,7 +101,7 @@
         border-radius: 5px;
         -moz-border-radius: 5px;
         background-clip: padding-box;
-        margin: 120px 50px 120px 700px;
+        margin: 120px 0 120px 900px;
         width: 300px;
         padding: 35px 35px 15px 35px;
         background: #ccc;

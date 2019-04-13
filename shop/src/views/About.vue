@@ -45,13 +45,15 @@
             <div slot="header" class="clearfix" style="text-align: left; font-size: 20px;">
               <span>评论区</span>
             </div>
-            <div v-for="co in comments" class="text item">
-              <p>{{co.nickname}}于{{co.time}}发表评论：</p>
+            <div v-for="co in comments" class="text item" style="text-align: left;">
+              <hr/>
+              <p style="color: blue">{{co.nickname}}于{{co.time}}发表评论：</p>
+              <el-rate v-model="co.score" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" disabled></el-rate>
               <p>{{co.content}}</p>
-              <p>评分：{{co.score}}分</p>
               <p v-if="co.reply !== null && co.reply !== ''">
-                官方回复（{{co.replyTime}}）：{{co.reply}}
+                回复（{{co.replyTime}}）：{{co.reply}}
               </p>
+              <hr/>
             </div>
           </el-card>
         </div>

@@ -2,7 +2,7 @@
     <div class="main" style="height: 722px;">
         <el-header style="padding: 0">
             <el-menu class="el-menu-demo" mode="horizontal" background-color="#545c64"
-                     text-color="#fff" active-text-color="#ffd04b" @select="handleSelect2">
+                     text-color="#fff" active-text-color="#ffd04b" @select="handleSelect2" :default-active="defaultActive">
                 <el-menu-item index="1" style="width: 300px">
                     <span slot="title">{{this.$store.state.user.nickname}},个人中心</span>
                 </el-menu-item>
@@ -73,8 +73,11 @@
     export default {
         name: "Main",
 
+        inject: ['reload'],
+
         data() {
             return {
+                defaultActive: '1',
             };
         },
 
@@ -123,7 +126,7 @@
                 switch (key) {
                     case "2" :
                         this.logout();
-                        this.router.push('/login');
+                        this.$router.push("/index");
                         break;
                 }
             },
@@ -131,7 +134,6 @@
             logout () {
                 userLogout().then(res => {
                     this.$store.commit('cleanToken');
-                    this.$router.push('');
                 });
             },
         },
