@@ -7,11 +7,11 @@
       <el-main>
         <el-container>
           <el-aside>
-            <img :src="bookData.picture" width="300px" height="300px"/>
+            <img :src="bookData.picture" width="300px" height="350px"/>
           </el-aside>
           <el-main class="right-main">
-            <el-card class="box-card" style="background-color: #ebebeb; height: 400px">
-              <div :key="1" class="text item" style="font-size: 28px">
+            <el-card class="box-card" style="height: 350px; background-color: rgba(182,170,174,0.18)">
+              <div :key="1" class="text item" style="font-size: 24px">
                 {{bookData.name}}
               </div>
               <div :key="2" class="text item" style="font-size: 16px; color: blue">
@@ -32,8 +32,10 @@
                 </div>
                 <div v-else>
                   <el-button type="danger" @click="addCart">加入购物车</el-button>
-                  <el-button type="primary" @click="addFocus" v-show="!focusOrNot">关注</el-button>
-                  <el-button type="info" @click="addFocus" v-show="focusOrNot">取消关注</el-button>
+                  <div v-if="token !== ''">
+                    <el-button type="primary" @click="addFocus" v-show="!focusOrNot">关注</el-button>
+                    <el-button type="info" @click="addFocus" v-show="focusOrNot">取消关注</el-button>
+                  </div>
                 </div>
               </div>
             </el-card>
@@ -41,17 +43,26 @@
         </el-container>
 
         <div class="comment_area">
-          <el-card class="box-card" shadow="hover">
-            <div slot="header" class="clearfix" style="text-align: left; font-size: 20px;">
-              <span>评论区</span>
+          <el-card class="box-card" shadow="hover" style="background-color: rgba(182,170,174,0.18); margin-top: 50px;">
+            <div slot="header" class="clearfix" style="margin:-18px -20px; padding:10px 20px;
+                            background: #66ccff; text-align: left; font-size: 22px; color: white">
+              <span>评论区（{{comments.length}}）</span>
             </div>
             <div v-for="co in comments" class="text item" style="text-align: left;">
-              <hr/>
-              <p style="color: blue">{{co.nickname}}于{{co.time}}发表评论：</p>
-              <el-rate v-model="co.score" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" disabled></el-rate>
+              <p style="color: blue">
+                {{co.nickname}}（{{co.time}}）：<el-rate v-model="co.score" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" disabled></el-rate>
+              </p>
               <p>{{co.content}}</p>
               <p v-if="co.reply !== null && co.reply !== ''">
-                回复（{{co.replyTime}}）：{{co.reply}}
+                <el-card class="box-card" style="background-color: rgba(182,170,174,0.18);">
+                  <div slot="header" class="clearfix" style="margin:-18px -20px; padding:10px 20px;
+                            background-color: rgba(182,170,174,0.18); text-align: left; font-size: 16px;">
+                    <span>店家回复（{{co.replyTime}}）：</span>
+                  </div>
+                  <div class="text item">
+                    {{co.reply}}
+                  </div>
+                </el-card>
               </p>
               <hr/>
             </div>
@@ -70,7 +81,7 @@
     import PersonalNav from '@//components/PersonalNav.vue'
 
     export default {
-        name: "Search",
+        name: "About",
 
         components: {
             PersonalNav,
@@ -82,6 +93,7 @@
                 comments: [],
                 focusOrNot: false,
                 bid: this.$route.params.bid,
+                token: this.$store.state.token,
             };
         },
 
