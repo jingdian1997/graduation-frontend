@@ -31,11 +31,9 @@
                   很抱歉，本书已经下架
                 </div>
                 <div v-else>
-                  <el-button type="danger" @click="addCart">加入购物车</el-button>
-                  <div v-if="token !== ''">
-                    <el-button type="primary" @click="addFocus" v-show="!focusOrNot">关注</el-button>
-                    <el-button type="info" @click="addFocus" v-show="focusOrNot">取消关注</el-button>
-                  </div>
+                    <el-button type="danger" @click="addCart">加入购物车</el-button>
+                    <el-button type="primary" @click="addFocus" v-if="token !== '' && !focusOrNot">关注</el-button>
+                    <el-button type="info" @click="addFocus" v-if="token !== '' && focusOrNot">取消关注</el-button>
                 </div>
               </div>
             </el-card>
@@ -117,9 +115,16 @@
 
             addCart() {
                 addCart(this.bid).then(res => {
-                    this.$alert('商品已加入购物车', '操作成功', {
-                        confirmButtonText: '确定',
-                    });
+                    if (res.code === 200) {
+                        this.$alert('商品已加入购物车', '操作成功', {
+                            confirmButtonText: '确定',
+                        });
+                    } else if (res.code === 401) {
+                        this.$alert('请先登录', {
+                            confirmButtonText: '确定',
+                        });
+                        this.$router.push('/login');
+                    }
                 });
             },
 

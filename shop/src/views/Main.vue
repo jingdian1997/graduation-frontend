@@ -126,7 +126,6 @@
                 switch (key) {
                     case "2" :
                         this.logout();
-                        this.$router.push("/index");
                         break;
                 }
             },
@@ -134,6 +133,7 @@
             logout () {
                 userLogout().then(res => {
                     this.$store.commit('cleanToken');
+                    this.$router.push("/");
                 });
             },
         },
