@@ -8,6 +8,7 @@
                         <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
                     </el-select>
                     <el-button type="primary" icon="el-icon-search" @click="getOrders">查询</el-button>
+                    <el-button type="primary" icon="el-icon-search" @click="openIdSearch">查询订单号</el-button>
                 </div>
             </el-header>
             <el-main>
@@ -41,12 +42,20 @@
                     <el-button type="primary" @click="deliverOrder">确 定</el-button>
                 </span>
             </el-dialog>
+
+            <el-dialog title="提示" :visible.sync="dialogVisible2" width="50%">
+                <el-input v-model="orderId" placeholder="按照单号查找"></el-input>
+                <span slot="footer" class="dialog-footer">
+                    <el-button @click="dialogVisible2 = false">取 消</el-button>
+                    <el-button type="primary" icon="el-icon-search" @click="getOrderDetail">查 询</el-button>
+                </span>
+            </el-dialog>
         </el-container>
     </div>
 </template>
 
 <script>
-    import {orderList, confirmOrder, deliverOrder} from '@/api'
+    import {orderList, confirmOrder, deliverOrder, orderDetail} from '@/api'
 
     export default {
         name: "Order",
@@ -75,8 +84,10 @@
                 }],
                 status: null,
                 dialogVisible: false,
+                dialogVisible2: false,
                 deliverNo: '',
                 deliverId: -1,
+                orderId: '',
             };
         },
 
@@ -95,6 +106,20 @@
                 this.$router.push({
                     path: `/od/${id}/`,
                 });
+            },
+
+            getOrderDetail() {
+                if (this.orderId > 0) {
+                    this.dialogVisible2 = false;
+                    this.$router.push({
+                        path: `/od/${this.orderId}/`,
+                    });
+                } else {
+                    this.$message({
+                        message: '请填写正确的订单编号',
+                        type: 'error',
+                    });
+                }
             },
 
             confirmOrder(id) {
@@ -138,6 +163,10 @@
                 this.deliverNo = '';
                 this.deliverId = id;
             },
+
+            openIdSearch() {
+                this.dialogVisible2 = true;
+            }
         },
     }
 </script>

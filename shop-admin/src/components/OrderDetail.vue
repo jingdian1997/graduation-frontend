@@ -64,6 +64,12 @@
         methods: {
             getOrderDetail() {
                 orderDetail(this.id).then(res => {
+                    if (res.data === null) {
+                        this.$message({
+                            message: '错误的订单编号',
+                            type: 'error',
+                        });
+                    }
                     this.address = res.data.address;
                     this.orders = res.data.order;
                     this.detail = res.data.detail;

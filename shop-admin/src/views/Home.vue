@@ -37,6 +37,10 @@
               <i class="el-icon-circle-plus"></i>
               <span slot="title">评论管理</span>
             </el-menu-item>
+            <el-menu-item index="6">
+              <i class="el-icon-picture"></i>
+              <span slot="title">销售统计</span>
+            </el-menu-item>
           </el-menu>
         </el-col>
       </el-aside>
@@ -76,6 +80,9 @@
                         break;
                     case "5":
                         this.$router.push("/comment");
+                        break;
+                    case "6":
+                        this.$router.push("/statics");
                         break;
                 }
             },

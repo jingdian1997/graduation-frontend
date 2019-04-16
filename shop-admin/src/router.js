@@ -11,6 +11,7 @@ import BookDetail from './components/BookDetail.vue'
 import BookInsert from './components/BookInsert.vue'
 import OrderRefund from './components/OrderRefund.vue'
 import Comment from './components/Comment.vue'
+import Statics from './components/Statics.vue'
 
 Vue.use(Router);
 
@@ -31,6 +32,7 @@ export default new Router({
                 { path: '/bookInsert', component: BookInsert, name: 'BookInsert' },
                 { path: '/refund', component: OrderRefund, name: 'OrderRefund' },
                 { path: '/comment', component: Comment, name: 'Comment' },
+                { path: '/statics', component: Statics, name: 'Statics' },
             ],
         }, {
             path: '/',

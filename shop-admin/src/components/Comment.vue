@@ -64,6 +64,7 @@
                 commentReply(this.commentId, this.reply).then(res => {
                     if (res.code === 200) {
                         this.$message("回复成功！");
+                        this.dialogVisible = false;
                         this.getComment();
                     } else {
                         this.$message({
