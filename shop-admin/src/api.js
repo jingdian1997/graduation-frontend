@@ -89,3 +89,7 @@ export const commentReply = (id, reply) => post("comment/replyComment", {
     id: id,
     reply: reply,
 });
+
+export const staticMonth = (year) => get("static/month12/" + year);
+
+export const staticAmount = () => get("static/amount");
