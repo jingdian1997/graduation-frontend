@@ -47,13 +47,16 @@
             handleSelect2(key, keyPath) {
                 switch (key) {
                     case "1" :
-                        this.$router.push('/main/');
+                        this.$router.push('/main');
                         break;
                     case "2" :
+                        this.$router.push('/cart');
                         break;
                     case "3":
+                        this.$router.push('/order');
                         break;
                     case "4" :
+                        this.$router.push('/info');
                         break;
                     case "5":
                         this.logout();

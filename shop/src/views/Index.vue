@@ -1,9 +1,9 @@
 <template>
     <div class="index">
         <el-container>
-            <el-header style="height: 130px; margin-left: -140px; margin-right: -140px">
+            <el-header style="height: 130px; margin-left: -100px; margin-right: -100px; padding: 0 0">
                 <el-container>
-                    <el-header>
+                    <el-header style="padding: 0 0">
                         <PersonalNav></PersonalNav>
                     </el-header>
                     <el-main>

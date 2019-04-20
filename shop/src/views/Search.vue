@@ -1,9 +1,9 @@
 <template>
     <div class="search">
         <el-container>
-            <el-header style="height: 200px; margin-left: -40px; margin-right: -40px">
+            <el-header style="height: 200px; padding: 0 0">
                 <el-container>
-                    <el-header>
+                    <el-header style="padding: 0 0">
                         <PersonalNav></PersonalNav>
                     </el-header>
                     <el-main>

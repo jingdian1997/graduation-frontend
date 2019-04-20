@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <el-container>
-      <el-header style="height: 130px; margin-left: -70px; margin-right: -70px">
+      <el-header style="height: 130px; padding: 0 0">
         <PersonalNav></PersonalNav>
       </el-header>
       <el-main>
