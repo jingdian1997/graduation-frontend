@@ -1,6 +1,5 @@
 <template>
     <div class="home">
-        空白页面
     </div>
 </template>
 
